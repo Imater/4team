@@ -1,0 +1,73 @@
+@import '../../theme/colors.styl'
+@import '../../theme/size.styl'
+
+.repairContainer
+  position fixed
+  height 100%
+  width 100%
+  background-color $alabaster
+
+.repair
+  display flex
+  flex-direction column
+  text-align center
+  margin 150px auto 0
+  font-weight 400
+  color $text-black
+  width 788px
+  position: relative
+  height: calc(100vh - 150px);
+
+.repairMessage
+  margin 38px auto 0
+  text-align center
+  padding-top 29px
+  position relative
+  width 788px
+  height 154px
+  background $white
+  box-shadow 0 2px 2px #dfdcdc
+
+.h1
+  font-size 36px
+  line-height 49px
+
+.h2
+  margin-top 9px
+  font-size $font-size-base
+  line-height 17px
+
+.socials
+  position relative
+  top -3px
+
+.copyright,
+.version
+  font-size $font-size-base
+  display block
+  color $text-black
+  line-height 17px
+
+.copyright
+  display flex
+  flex 1
+  width 100%
+  flex-direction column-reverse
+  min-height 37px
+  &> span
+    margin-bottom 20px
+
+.version
+  margin-top 12px
+
+.cogwheel,
+.screw
+  position: absolute
+
+.cogwheel
+  top 27px
+  left 246px
+
+.screw
+  top 2px
+  right 264px

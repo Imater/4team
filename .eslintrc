@@ -1,0 +1,167 @@
+{
+  "extends": "eslint-config-airbnb",
+  "env": {
+    "es6": true
+  },
+  "rules": {
+    "complexity": 0,
+    "semi": [
+      "error",
+      "never"
+    ],
+    "no-unused-vars": 2,
+    "no-case-declarations": 0,
+    "react/require-default-props": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "react/forbid-prop-types": 0,
+    "react/no-unused-prop-types": 0,
+    "import/extensions": 0,
+    "react/jsx-filename-extension": 0,
+    "no-mixed-operators": 0,
+    "import/newline-after-import": 0,
+    "no-useless-escape": 0,
+    "no-bitwise": 0,
+    "react/no-array-index-key": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "jsx-a11y/alt-text": 0,
+    "class-methods-use-this": 0,
+    "import/no-dynamic-require": 0,
+    "react/no-unescaped-entities": 0,
+    "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/href-no-hash": 0,
+    "import/prefer-default-export": 0,
+    "no-lonely-if": 0,
+    "no-param-reassign": ["error", { "props": false }],
+    "comma-dangle": [2, "never"],
+    "arrow-parens": ["error", "as-needed"],
+    "no-underscore-dangle": [
+      2,
+      {
+        "allowAfterThis": false,
+        "allow": [
+          "_exception",
+          "__",
+          "__html",
+          "__data",
+          "__DEVELOPMENT__",
+          "__CLIENT__",
+          "__SERVER__",
+          "__DISABLE_SSR__",
+          "__DEVTOOLS__"
+        ]
+      }
+    ],
+    "max-len": [
+      2,
+      250
+    ],
+    "react/prefer-stateless-function": 0,
+    "react/no-multi-comp": 0,
+    "react/display-name": [
+      0,
+      {
+        "ignoreTranspilerName": false
+      }
+    ],
+    "react/jsx-no-bind": [1, {
+      "ignoreRefs": true,
+      "allowArrowFunctions": false,
+      "allowBind": false
+    }],
+    "react/jsx-no-duplicate-props": 2,
+    "react/no-string-refs": 2,
+    "react/prefer-es6-class": [
+      2,
+      "always"
+    ],
+    "react/jsx-pascal-case": 2,
+    "react/require-optimization": [2, {allowDecorators: ['pureRender']}],
+    "react/jsx-handler-names": [
+      0,
+      {
+        "eventHandlerPrefix": "handle",
+        "eventHandlerPropPrefix": "on"
+      }
+    ],
+    "jsx-quotes": [
+      2,
+      "prefer-single"
+    ],
+    "import/no-unresolved": [
+      1,
+      {
+        "commonjs": true,
+        "amd": false
+      }
+    ],
+    "import/no-duplicates": 2,
+    "import/no-named-as-default": 2,
+    "import/named": 2,
+    "import/namespace": 2,
+    "import/default": 2,
+    "import/export": 2,
+    "import/imports-first": 2,
+    "indent": [
+      2,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "react/sort-comp": 0,
+    "no-console": 1,
+    "no-confusing-arrow": 0,
+    "no-alert": 0,
+    "no-debugger": 0
+  },
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "parser": "babel-eslint",
+  "settings": {
+    "import/parser": "babel-eslint",
+
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack/dev.config.js"
+      },
+      "node": {
+        "moduleDirectory": [
+          "src",
+          "node_modules"
+        ]
+      }
+    },
+    "import/extensions": [
+      ".js",
+      ".jsx"
+    ],
+    "import/ignore": [
+      "node_modules",
+      "api",
+      ".json$",
+      ".less$",
+      ".styl$",
+      ".scss$"
+    ]
+  },
+  "globals": {
+    "__DEVELOPMENT__": true,
+    "__CLIENT__": true,
+    "__SERVER__": true,
+    "__DISABLE_SSR__": true,
+    "__DEVTOOLS__": true,
+    "window": true,
+    "socket": true,
+    "webpackIsomorphicTools": true,
+    "describe": true,
+    "location": true,
+    "navigator": true,
+    "it": true,
+    "xit": true,
+    "expect": true,
+    "document": true,
+    "sinon": true
+  }
+}

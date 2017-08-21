@@ -1,0 +1,15 @@
+--ignore-dir=.happypack
+--ignore-dir=.storybook
+--ignore-dir=assets
+--ignore-dir=blueprints
+--ignore-dir=build
+--ignore-dir=coverage
+--ignore-dir=db
+--ignore-dir=dist
+--ignore-dir=node_modules
+--ignore-dir=static
+--ignore-dir=upload
+--ignore-file=is:webpack-assets.json
+--ignore-file=is:webpack-stats.json
+--ignore-file=is:yarn.lock
+--color

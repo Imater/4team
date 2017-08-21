@@ -1,0 +1,15 @@
+.idea/
+.happypack/
+.tern-port
+node_modules/
+dist/
+coverage/
+*.iml
+webpack-assets.json
+webpack-stats.json
+npm-debug.log
+.DS_Store
+static/__components
+
+.tern-project
+npm-debug.log*
