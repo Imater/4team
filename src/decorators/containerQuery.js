@@ -6,7 +6,8 @@ const getWidth = R.compose(
   R.propOr(undefined, 1),
 )
 
-export default ({ styles }, query = {}) => component => {
+export default (params, query = {}) => component => {
+  const styles = R.path(['styles'], params)
   const calculatedQuery = R.compose(
     R.merge(query),
     R.reduce((acc, item) => ({

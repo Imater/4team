@@ -1,41 +1,40 @@
 require('babel-polyfill');
-
+require('../server.babel')
 // Webpack config for creating the production bundle.
-var path = require('path');
-var webpack = require('webpack');
-var CleanPlugin = require('clean-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var strip = require('strip-loader');
-
-var projectRootPath = path.resolve(__dirname, '../');
-var assetsPath = path.resolve(projectRootPath, './static/dist');
+const path = require('path')
+const HappyPack = require('happypack')
+const webpack = require('webpack')
+const CleanPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const strip = require('strip-loader')
+const babelLoaderQuery = require('./babelLoaderQuery')
+const projectRootPath = path.resolve(__dirname, '../')
+const assetsPath = path.resolve(projectRootPath, './static/dist')
 
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
-var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
 
-const isVendorModule = (module) => {
-  // returns true for everything in node_modules
-  return module.context && module.context.indexOf('node_modules') !== -1;
-}
+const classNamesLoader = path.resolve(projectRootPath, './webpack/classnames-loader.js')
+
+const classFormat = '[path]_[local]'
 
 const stylesLoader = [
-  `css-loader?modules&importLoaders=2&localIdentName=[hash:base64]`,
-  'stylus-loader',
-];
+  `css-loader?modules&importLoaders=1&minimize=true&localIdentName=${classFormat}`,
+  'postcss-loader'
+]
 
 module.exports = {
   // devtool: 'source-map',
   context: path.resolve(__dirname, '..'),
   entry: {
     'main': [
-      'theme/optimize.js',
-      './src/client.js',
+      './src/client.js'
     ]
   },
   output: {
-    path: assetsPath,
-    filename: '[name]-[chunkhash].js',
+    path: path.resolve(__dirname, '../static/dist'),
+    filename: '[name]-[hash].js',
     chunkFilename: '[name]-[chunkhash].js',
     publicPath: '/dist/'
   },
@@ -44,27 +43,12 @@ module.exports = {
       { test: /\.jsx?$/, exclude: /node_modules/, loaders: [strip.loader('debug'), 'babel-loader'] },
       { test: /\.json$/, loader: 'json-loader' },
       {
-        test: /\.styl$/,
-        loader: ExtractTextPlugin.extract({
+        test: /\.sss$/,
+        use: [classNamesLoader, ...ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [].concat(stylesLoader).join('!')
-        })
+          use: stylesLoader,
+        })],
       },
-      {
-        test: /\.less$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader?modules&importLoaders=2!autoprefixer-loader?browsers=last 2 version!less-loader?outputStyle=expanded'
-        })
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader?modules&importLoaders=2!autoprefixer-loader?browsers=last 2 version!sass-loader?outputStyle=expanded'
-        })
-      },
-      { test: /\.theme\.css$/, loader: 'raw-loader' },
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
       { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
       { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/octet-stream" },
@@ -76,11 +60,18 @@ module.exports = {
   resolve: {
     modules: [
       'src',
-      'node_modules'
+      'node_modules',
     ],
-    extensions: ['*', '/', '.json', '.js', '.jsx']
+    extensions: ['.json', '.js', '.jsx'],
   },
   plugins: [
+    new HappyPack({
+      verbose: false,
+      loaders: [
+        'react-hot-loader/webpack',
+        `babel-loader?${JSON.stringify(babelLoaderQuery())}`
+      ]
+    }),
     new CleanPlugin([assetsPath], { root: projectRootPath }),
     // Seperate vendor code into a seperate file
     new webpack.optimize.CommonsChunkPlugin({
@@ -96,7 +87,10 @@ module.exports = {
       minimize: true
     }),
     // css files from the extract-text-plugin loader
-    new ExtractTextPlugin({ filename: '[name]-[chunkhash].css', allChunks: true }),
+    new ExtractTextPlugin({
+      filename: 'dist/[name]-[hash].css',
+      allChunks: true,
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
@@ -123,4 +117,4 @@ module.exports = {
     // new webpack.optimize.ModuleConcatenationPlugin(),
     webpackIsomorphicToolsPlugin
   ]
-};
+}

@@ -21,7 +21,6 @@ const Html = ({ assets, component, store }) => {
   return (
     <html lang='ru-RU'>
       <head>
-        <title>ОНЛАЙН-ПЛОЩАДКА аренды у таких как вы</title>
         {head.base.toComponent()}
         {head.meta.toComponent()}
         {head.link.toComponent()}

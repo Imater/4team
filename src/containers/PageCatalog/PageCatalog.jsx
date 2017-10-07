@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
-import { PageCatalog } from 'components/PageCatalog'
+import { AdaptiveHeader } from 'components/AdaptiveHeader'
 
 export default class PageCatalogContainer extends PureComponent {
   render() {
     return (
-      <PageCatalog />
+      <AdaptiveHeader />
     )
   }
 }
