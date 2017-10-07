@@ -20,5 +20,4 @@ yarn build
 yarn start-prod
 ```
 url - localhost:8080 
-
 and open browser with displayed link
