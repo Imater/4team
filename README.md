@@ -1,4 +1,4 @@
-Big rent store
+Big learn store
 
 ## install and development
 To start develop, run:
