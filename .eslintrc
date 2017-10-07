@@ -156,6 +156,7 @@
     "socket": true,
     "webpackIsomorphicTools": true,
     "describe": true,
+    "jest": true,
     "location": true,
     "navigator": true,
     "it": true,

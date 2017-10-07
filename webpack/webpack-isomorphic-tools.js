@@ -1,4 +1,4 @@
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
 // see this link for more info on what all of this means
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
@@ -64,7 +64,7 @@ module.exports = {
       parser: WebpackIsomorphicToolsPlugin.css_loader_parser
     },
     style_modules: {
-      extensions: ['less','scss', 'styl', 'css'],
+      extensions: ['less','scss', 'sss', 'css'],
       filter: function(module, regex, options, log) {
         if (options.development) {
           // in development mode there's webpack "style-loader",

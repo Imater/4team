@@ -1,17 +1,17 @@
 // Webpack config for development
 require('babel-polyfill')
 const HappyPack = require('happypack')
-const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const babelLoaderQuery = require('./babelLoaderQuery')
 
-var host = (process.env.HOST || 'localhost')
-var port = parseInt(process.env.PORT, 10) || 3001
-
+const host = (process.env.HOST || 'localhost')
+const port = parseInt(process.env.PORT, 10) || 3001
+const projectRootPath = path.resolve(__dirname, '../');
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
-var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
+const classNamesLoader = path.resolve(projectRootPath, './webpack/classnames-loader.js')
 
 const isVendorModule = (module) => {
   // returns true for everything in node_modules
@@ -51,9 +51,11 @@ const plugins = [
   webpackIsomorphicToolsPlugin.development()
 ]
 
+const classFormat = '[path]_[local]'
+
 const stylesLoader = [
-  `css-loader?modules&importLoaders=1&localIdentName=[path]_[local]`,
-  'stylus-loader'
+  `css-loader?modules&importLoaders=1&minimize=true&localIdentName=${classFormat}`,
+  'postcss-loader'
 ];
 
 module.exports = {
@@ -61,9 +63,8 @@ module.exports = {
   entry: {
     'main': [
       'react-hot-loader/patch',
-      './src/theme/optimize.js',
       'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr',
-      './src/client.js',
+      './src/client.js'
     ]
   },
   output: {
@@ -72,38 +73,38 @@ module.exports = {
     chunkFilename: '[name]-[chunkhash].js',
     publicPath: 'http://' + host + ':' + port + '/dist/'
   },
+  resolve: {
+    modules: [
+      'src',
+      'node_modules',
+    ],
+    extensions: ['.json', '.js', '.jsx'],
+  },
   module: {
     loaders: [
       {
         test: /\.js[x]?$/,
         exclude: /node_modules/,
-        loader: 'happypack/loader',
+        use: [
+          'happypack/loader',
+        ],
       },
-      { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.styl$/, exclude: /node_modules/, use: ['style-loader'].concat(stylesLoader) },
-      { test: /\.less$/, exclude: /node_modules/, use: 'style-loader!css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer-loader?browsers=last 2 version!less-loader?outputStyle=expanded&sourceMap' },
-      { test: /\.scss$/, exclude: /node_modules/, use: 'style-loader!css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer-loader?browsers=last 2 version!sass-loader?outputStyle=expanded&sourceMap' },
-      { test: /\.css$/, loader: 'raw-loader' },
-      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/octet-stream" },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "raw-loader" },
-      { test: webpackIsomorphicToolsPlugin.regular_expression('images'), loader: 'url-loader?limit=10240' }
+      {
+        test: /\.sss$/,
+        use: [classNamesLoader, 'style-loader'].concat(stylesLoader),
+      },
+      {
+        test: /\.(jpg|png|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10,
+            name: 'images/[hash].[ext]',
+          },
+        },
+      },
     ]
   },
-  resolve: {
-    modules: [
-      'src',
-      'node_modules'
-    ],
-    // TODO eslint-plugin-resole-webpack not support webpack@2 `resolve.modules` path
-    // https://github.com/benmosher/eslint-plugin-import/pull/319
-    // Waiting for merge this PR or webpack-2 resolver will be implemented as plugin
-    // modulesDirectories: [
-    //   'node_modules'
-    // ],
-    extensions: ['/', '*', '.json', '.js', '.jsx']
-  },
+
   plugins
 }

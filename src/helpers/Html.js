@@ -21,14 +21,14 @@ const Html = ({ assets, component, store }) => {
   return (
     <html lang='ru-RU'>
       <head>
-        <title>Рельеф центр - канцтовары, товары для школы и офиса оптом</title>
+        <title>ОНЛАЙН-ПЛОЩАДКА аренды у таких как вы</title>
         {head.base.toComponent()}
         {head.meta.toComponent()}
         {head.link.toComponent()}
         {head.script.toComponent()}
         {head.style.toComponent()}
-
-        <link rel='shortcut icon' href='/favicon.ico' />
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' />
+        <link rel='shortcut icon' href='/favicon.png' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
 
         {/* styles (will be present only in production with webpack extract text plugin) */}

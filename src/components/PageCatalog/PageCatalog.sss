@@ -1,0 +1,16 @@
+@import 'variables.sss'
+.pageCatalog
+  position: relative
+  padding-bottom: 36px
+  display: block
+  height: 70px
+.zzzz
+  background: red
+  width: 100%
+  display: block
+  &:container(width < 630px)
+    background: green
+  &:container(width > 630px)
+    background: red
+  &:container(width > 930px)
+    background: yellow

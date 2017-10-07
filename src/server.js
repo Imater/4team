@@ -72,7 +72,7 @@ app.use(compression())
 app.use(cookieParser())
 app.use(bodyParser.json())
 
-app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.png')))
 
 // Add headers
 app.use((req, res, next) => {
@@ -166,7 +166,7 @@ app.use('/upload', (req, res) => {
 proxyUpload.on('error', errorHandler)
 
 // Proxy to Upload server
-app.use('/home/relefopt/beta.relefopt.ru/www/upload/', (req, res) => {
+app.use('/home/beta.4team.ru/www/upload/', (req, res) => {
   proxyUpload.web(req, res, { target: targetUrlUpload })
 })
 

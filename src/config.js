@@ -30,17 +30,17 @@ export default Object.assign({
   loyaltyOrderMaxLimit: 10000,
   serverSideFiltration: false,
   app: {
-    title: '4team',
-    description: 'Big tasks store',
+    title: '4Team',
+    description: 'Big rent store',
     head: {
-      titleTemplate: '%s - 4team',
+      titleTemplate: '%s - team',
       meta: [
         { name: 'description', content: 'Big distribution store' },
         { charset: 'utf-8' },
         { property: 'og:site_name', content: '4team' },
         { property: 'og:image', content: 'http://4team.ru/images/logo.png' },
         { property: 'og:locale', content: 'ru_RU' },
-        { property: 'og:title', content: 'Relef' },
+        { property: 'og:title', content: '4team' },
         { property: 'og:description', content: 'Big distribution store' },
         { property: 'og:card', content: 'Gaze from your telescope' },
         { property: 'og:site', content: '@CSSSR' },

@@ -1,14 +1,16 @@
-import React from 'react'
-
+import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-
 import NotFound from 'components/NotFound'
+import pureRender from 'pure-render-decorator'
 
-export default function PageNotFound() {
-  return (
-    <div>
-      <Helmet title='Страница не найдена' />
-      <NotFound />
-    </div>
-  )
+@pureRender
+export default class PageNotFound extends Component {
+  render() {
+    return (
+      <div>
+        <Helmet title='Страница не найдена' />
+        <NotFound />
+      </div>
+    )
+  }
 }
