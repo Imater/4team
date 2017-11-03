@@ -36,7 +36,7 @@
     "start-dev-render-on-client": "better-npm-run start-dev-render-on-client",
     "start-test": "better-npm-run start-test",
     "stats": "better-npm-run stats & webpack-bundle-size-analyzer webpack-stats.json",
-    "storybook": "start-storybook -p 9001",
+    "storybook": "better-npm-run start-storybook",
     "test": "jest",
     "watch-client": "better-npm-run watch-client"
   },
@@ -44,6 +44,7 @@
   "dependencies": {
     "@kadira/react-storybook-addon-info": "^3.4.0",
     "@kadira/storybook": "^2.35.3",
+    "@kadira/storybook-addon-knobs": "^1.7.1",
     "axios": "^0.16.2",
     "babel-polyfill": "^6.23.0",
     "body-parser": "^1.17.1",
@@ -197,7 +198,10 @@
     "sugarss": "^1.0.0",
     "webpack-bundle-size-analyzer": "^2.7.0",
     "webpack-hot-middleware": "^2.19.1",
-    "why-did-you-update": "^0.0.8"
+    "why-did-you-update": "^0.0.8",
+    "@storybook/react": "^3.2.12",
+    "@storybook/addon-actions": "^3.2.12",
+    "@storybook/addon-links": "^3.2.12"
   },
   "betterScripts": {
     "start": {
@@ -206,6 +210,12 @@
         "NODE_PATH": "./src",
         "NODE_ENV": "production",
         "PORT": 8080
+      }
+    },
+    "start-storybook": {
+      "command": "start-storybook -p 9001",
+      "env": {
+        "NODE_ENV": "development"
       }
     },
     "start-test": {
