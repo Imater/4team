@@ -3,9 +3,10 @@ const projectRootPath = path.resolve(__dirname, '../');
 const classNamesLoader = path.resolve(projectRootPath, './webpack/classnames-loader.js')
 const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../webpack/webpack-isomorphic-tools'))
+const classFormat = '[path]_[local]'
 const stylesLoader = [
-  `css-loader?modules&importLoaders=1&localIdentName=[path]_[local]`,
-  'stylus-loader'
+  `css-loader?modules&importLoaders=1&minimize=true&localIdentName=${classFormat}`,
+  'postcss-loader'
 ];
 module.exports = {
   plugins:  [
@@ -26,13 +27,10 @@ module.exports = {
         ]
       },
       { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.styl$/, exclude: /node_modules/, use: ['style-loader'].concat(stylesLoader) },
       {
         test: /\.sss$/,
         use: [classNamesLoader, 'style-loader'].concat(stylesLoader),
       },
-      { test: /\.less$/, exclude: /node_modules/, use: 'style-loader!css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer-loader?browsers=last 2 version!less-loader?outputStyle=expanded&sourceMap' },
-      { test: /\.scss$/, exclude: /node_modules/, use: 'style-loader!css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer-loader?browsers=last 2 version!sass-loader?outputStyle=expanded&sourceMap' },
       { test: /\.css$/, loader: 'raw-loader' },
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
       { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },

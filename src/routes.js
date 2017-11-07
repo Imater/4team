@@ -1,13 +1,12 @@
-import React from 'react'
-import { Route, Switch } from 'react-router-dom'
-
-import { PageCatalogContainer } from './containers/PageCatalog/index'
-import PageNotFound from './containers/PageNotFound'
+import App from './containers/App'
 
 // export default routes
-export default () => (
-  <Switch>
-    <Route exact path='/' component={PageCatalogContainer} />
-    <Route path='*' component={PageNotFound} />
-  </Switch>
-)
+export default () => ({
+  path: '/',
+  component: App,
+  indexRoute: {
+    getComponent: (loc, cb) => require.ensure([], require =>
+      cb(null, require('./containers/PageCatalog')), 'PageCatalog')
+  }
+})
+

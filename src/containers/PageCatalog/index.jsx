@@ -1,2 +1,2 @@
-export { default as PageCatalogContainer } from './PageCatalog'
+export { default } from './PageCatalog'
 

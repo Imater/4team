@@ -54,7 +54,7 @@ const plugins = [
 const classFormat = '[path]_[local]'
 
 const stylesLoader = [
-  `css-loader?modules&importLoaders=1&minimize=true&localIdentName=${classFormat}`,
+  `css-loader?modules&importLoaders=1&localIdentName=${classFormat}`,
   'postcss-loader'
 ];
 

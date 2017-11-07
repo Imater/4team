@@ -1,4 +1,4 @@
-import { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 import pureRender from 'pure-render-decorator'
 import { connect } from 'react-redux'
 import { asyncConnect } from 'redux-async-connect'
@@ -7,12 +7,12 @@ import { asyncConnect } from 'redux-async-connect'
 @connect()
 @pureRender
 class App extends Component {
-  static propTypes = {
-    children: PropTypes.object.isRequired
-  }
-
   render() {
-    return this.props.children
+    return (
+      <div>
+        {this.props.children}
+      </div>
+    )
   }
 }
 

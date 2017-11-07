@@ -8,7 +8,6 @@ export default class Repair extends PureComponent {
       <div className={styles('repairContainer')}>
         <Helmet title='Технические работы' />
         <div className={styles('repair')}>
-          <span className={styles('version')}>2.102</span>
           <div className={styles('repairMessage')}>
             <h1 className={styles('h1')}>
               На сайте ведутся технические работы.

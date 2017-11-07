@@ -1,7 +1,14 @@
-import { configure } from '@kadira/storybook';
+import { configure, storiesOf, setAddon } from '@storybook/react'
+import infoAddon, { setDefaults } from '@storybook/addon-info'
 
-const req = require.context('../src/components/', true, /story\.jsx$/);
+setAddon(infoAddon);
 
-configure(function () {
-	req.keys().forEach(req);
-}, module);
+setDefaults({
+  source: true,
+  inline: true,
+  header: false,
+});
+
+const req = require.context('../src/', true, /stories\.(js|jsx)$/)
+
+configure(() => req.keys().forEach(req), module)

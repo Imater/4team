@@ -1,4 +1,4 @@
-import postcss from 'postcss';
+const postcss = require('postcss');
 
 export default postcss.plugin('postcss-reverse-props', () =>
   css => css.walkRules((rule) => {

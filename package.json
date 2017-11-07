@@ -26,6 +26,7 @@
     "build-storybook": "better-npm-run build-storybook",
     "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\"",
     "start": "npm run dev-render-on-client",
+    "g": "plop",
     "dev-render-on-client": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev-render-on-client\"",
     "lint": "eslint -c .eslintrc src api --ext js,jsx",
     "lint-errors": "eslint -c .eslintrc src api --quiet --ext js,jsx",
@@ -101,7 +102,6 @@
     "react-redux-perfomance": "^5.0.7",
     "react-render-logger": "^1.0.1",
     "react-router": "^3.0.5",
-    "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "react-router-scroll": "^0.4.3",
     "react-scroll": "^1.5.4",
@@ -136,6 +136,9 @@
     "webpack-isomorphic-tools": "^3.0.3"
   },
   "devDependencies": {
+    "@storybook/addon-info": "3.2.5",
+    "@storybook/addon-knobs": "3.2.5",
+    "@storybook/react": "3.2.5",
     "autoprefixer": "^7.1.4",
     "autoprefixer-loader": "^3.1.0",
     "babel-core": "^6.25.0",
@@ -176,7 +179,8 @@
     "json-loader": "^0.5.4",
     "lint-staged": "^4.0.2",
     "loader-utils": "^1.1.0",
-    "postcss": "6.0.9",
+    "plop": "^1.7.4",
+    "postcss": "6.0.14",
     "postcss-autoreset": "2.0.0",
     "postcss-color-function": "4.0.0",
     "postcss-custom-properties": "6.0.1",
@@ -198,10 +202,7 @@
     "sugarss": "^1.0.0",
     "webpack-bundle-size-analyzer": "^2.7.0",
     "webpack-hot-middleware": "^2.19.1",
-    "why-did-you-update": "^0.0.8",
-    "@storybook/react": "^3.2.12",
-    "@storybook/addon-actions": "^3.2.12",
-    "@storybook/addon-links": "^3.2.12"
+    "why-did-you-update": "^0.0.8"
   },
   "betterScripts": {
     "start": {
