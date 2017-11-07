@@ -7,6 +7,9 @@ import { asyncConnect } from 'redux-async-connect'
 @connect()
 @pureRender
 class App extends Component {
+  propTypes = {
+    children: PropTypes.any
+  }
   render() {
     return (
       <div>

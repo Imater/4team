@@ -44,8 +44,7 @@ const component = renderProps => () => (
     )}
     history={history}
     key={Date.now()}
-  >
-  </Router>
+  />
 )
 
 const renderApp = renderProps => render(

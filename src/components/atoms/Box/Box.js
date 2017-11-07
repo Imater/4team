@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react'
-// import { string, number, bool, array, func, node } from 'prop-types'
+import { node } from 'prop-types'
 
 import cx from './Box.sss'
 
 export default class Box extends PureComponent {
-  static propTypes = {
-
+  propTypes = {
+    children: node
   }
 
   static defaultProps = {
