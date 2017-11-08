@@ -1,7 +1,9 @@
-/* eslint-disable global-require,import/no-extraneous-dependencies */
 const path = require('path')
 
 const root = path.join(__dirname, './src')
+
+/* eslint-disable global-require */
+/* eslint-disable import/no-extraneous-dependenies */
 const result = webpack => ({
   parser: 'sugarss',
   plugins: [
@@ -9,9 +11,6 @@ const result = webpack => ({
       addDependencyTo: webpack,
       path: `${root}/styles`
     }),
-    require('./webpack/postcss/container-query'),
-    require('./webpack/postcss/focus-within'),
-    require('./webpack/postcss/focus-ring'),
     require('postcss-custom-properties')({
       warnings: false
     }),

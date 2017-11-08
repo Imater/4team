@@ -25,7 +25,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 const filterFunction = item => !item.deferred
 
-const component = renderProps => (
+const component = renderProps => () => (
   <Router
     {...renderProps}
     render={applyRouterMiddleware(
@@ -43,22 +43,43 @@ const component = renderProps => (
       },
     )}
     history={history}
-  >
-    {getRoutes(store)}
-  </Router>
+    key={Date.now()}
+  />
 )
 
-match({ history, routes: getRoutes(store) }, (error, redirectLocation, renderProps) => {
-  render((
-    <AppContainer>
-      <Provider store={store} key='provider'>
-        <ProviderTunnel provide={{ helpers: { cookie } }}>
-          {() => component(renderProps)}
-        </ProviderTunnel>
-      </Provider>
-    </AppContainer>
-  ), dest)
-})
+const renderApp = renderProps => render(
+  <AppContainer warnings={false}>
+    <Provider store={store} key='provider'>
+      <ProviderTunnel provide={{ helpers: { cookie } }}>
+        {component(renderProps)}
+      </ProviderTunnel>
+    </Provider>
+  </AppContainer>,
+  dest
+)
+
+match({ history, routes: getRoutes(store) }, (error, redirectLocation, renderProps) => renderApp(renderProps))
+
+// const renderByRoutes = routes => match({ history, routes }, (error, redirectLocation, renderProps) => {
+//   render((
+//     <AppContainer>
+//       <Provider store={store} key='provider'>
+//         <ProviderTunnel provide={{ helpers: { cookie } }}>
+//           {() => component({ ...renderProps, routes })}
+//         </ProviderTunnel>
+//       </Provider>
+//     </AppContainer>
+//   ), dest)
+//
+// })
+// renderByRoutes(getRoutes(store))
+
+if (module.hot) {
+  module.hot.accept('./routes', () => {
+    const getRoutesNext = require('./routes') // eslint-disable-line global-require
+    renderApp({ routes: getRoutesNext(store) })
+  })
+}
 
 if (process.env.NODE_ENV !== 'production') {
   if (!dest || !dest.firstChild || !dest.firstChild.attributes || !dest.firstChild.attributes['data-react-checksum']) {

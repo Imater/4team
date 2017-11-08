@@ -1,8 +1,8 @@
 import React from 'react'
-import storiesOf from '../../utils/storiesOf.js'
+import { storiesOf } from '@storybook/react'
 import Repair from '.'
 
-storiesOf('Repair')
+storiesOf('Repair', module)
   .addWithInfo('Default without props', () => (
     <Repair />
   ))
