@@ -280,11 +280,11 @@
       "blueprints"
     ],
     "moduleNameMapper": {
-      "^.+\\.styl$": "identity-obj-proxy",
+      "^.+\\.sss": "identity-obj-proxy",
       "^.+\\.svg$": "<rootDir>/webpack/svgMock.js"
     },
     "transform": {
-      "^.+\\.js_off*": "<rootDir>/node_modules/babel-jest"
+      "^.+\\.js*": "<rootDir>/node_modules/babel-jest"
     },
     "transformIgnorePatterns": [
       "node_modules/(?!d3-array|d3-scale|d3-shape|d3-time)"
