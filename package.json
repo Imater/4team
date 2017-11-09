@@ -28,7 +28,7 @@
     "start": "npm run dev-render-on-client",
     "g": "plop",
     "dev-render-on-client": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev-render-on-client\"",
-    "lint": "eslint -c .eslintrc src api --ext js,jsx",
+    "lint": "eslint -c .eslintrc src api --ext js_off,jsx_off",
     "lint-errors": "eslint -c .eslintrc src api --quiet --ext js,jsx",
     "lint-fix": "eslint -c .eslintrc src api --ext js,jsx --fix",
     "lint-staged": "lint-staged",
@@ -284,7 +284,7 @@
       "^.+\\.svg$": "<rootDir>/webpack/svgMock.js"
     },
     "transform": {
-      "^.+\\.js*": "<rootDir>/node_modules/babel-jest"
+      "^.+\\.js_off*": "<rootDir>/node_modules/babel-jest"
     },
     "transformIgnorePatterns": [
       "node_modules/(?!d3-array|d3-scale|d3-shape|d3-time)"
