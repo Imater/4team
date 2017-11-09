@@ -1,7 +1,5 @@
 import React, { PureComponent, PropTypes } from 'react'
-import containerQuery from 'decorators/containerQuery'
-import R from 'ramda'
-import cx from './AdaptiveHeader.sss'
+import styles from './AdaptiveHeader.sss'
 
 class AdaptiveHeader extends PureComponent {
   static propTypes = {
@@ -10,7 +8,7 @@ class AdaptiveHeader extends PureComponent {
   render() {
     return (
       <div>
-        <div className={cx('adaptiveHeader', this.props.containerQuery)} >
+        <div className={styles.adaptiveHeader}>
           Feed me with components
         </div>
       </div>
@@ -18,7 +16,5 @@ class AdaptiveHeader extends PureComponent {
   }
 }
 
-export default R.compose(
-  containerQuery(cx),
-)(AdaptiveHeader)
+export default AdaptiveHeader
 

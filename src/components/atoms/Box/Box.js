@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { node } from 'prop-types'
 
-import cx from './Box.sss'
+import styles from './Box.sss'
 
 export default class Box extends PureComponent {
   propTypes = {
@@ -16,7 +16,7 @@ export default class Box extends PureComponent {
     // const {  } = this.props
 
     return (
-      <div className={cx('box')}>
+      <div className={styles.box}>
         {this.props.children}
       </div>
     )

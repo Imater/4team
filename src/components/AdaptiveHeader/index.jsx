@@ -1,1 +1,1 @@
-export { default as AdaptiveHeader } from './AdaptiveHeader'
+export { default } from './AdaptiveHeader'

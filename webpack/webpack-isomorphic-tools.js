@@ -64,7 +64,7 @@ module.exports = {
       parser: WebpackIsomorphicToolsPlugin.css_loader_parser
     },
     style_modules: {
-      extensions: ['less','scss', 'sss', 'css'],
+      extensions: ['sss', 'css'],
       filter: function(module, regex, options, log) {
         if (options.development) {
           // in development mode there's webpack "style-loader",

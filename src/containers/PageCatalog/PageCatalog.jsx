@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import Box from 'components/atoms/Box'
-import { AdaptiveHeader } from 'components/AdaptiveHeader'
+import AdaptiveHeader from 'components/AdaptiveHeader'
 
 export default class PageCatalog extends PureComponent {
   render() {
