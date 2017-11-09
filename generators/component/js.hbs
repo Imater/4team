@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 // import { string, number, bool, array, func, node } from 'prop-types'
 
-import cx from './{{ properCase name }}.sss'
+import styles from './{{ properCase name }}.sss'
 
 export default class {{ properCase name }} extends PureComponent {
   static propTypes = {
@@ -16,7 +16,7 @@ export default class {{ properCase name }} extends PureComponent {
     // const {  } = this.props
 
     return (
-      <div className={cx('{{ camelCase name }}')}>
+      <div className={styles['{{ camelCase name }}']}>
         {{ properCase name }}
       </div>
     )
