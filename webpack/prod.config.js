@@ -7,7 +7,6 @@ const webpack = require('webpack')
 const CleanPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const strip = require('strip-loader')
-const babelLoaderQuery = require('./babelLoaderQuery')
 const projectRootPath = path.resolve(__dirname, '../')
 const assetsPath = path.resolve(projectRootPath, './static/dist')
 
@@ -40,14 +39,14 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loaders: [strip.loader('debug'), 'babel-loader'] },
+      { test: /\.js[x]?$/, exclude: /node_modules/, loaders: [strip.loader('debug'), 'babel-loader'] },
       { test: /\.json$/, loader: 'json-loader' },
       {
         test: /\.sss$/,
-        use: [classNamesLoader, ...ExtractTextPlugin.extract({
+        loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: stylesLoader,
-        })],
+          use: [].concat(stylesLoader).join('!'),
+        }),
       },
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
       { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
@@ -65,13 +64,6 @@ module.exports = {
     extensions: ['.json', '.js', '.jsx'],
   },
   plugins: [
-    new HappyPack({
-      verbose: false,
-      loaders: [
-        'react-hot-loader/webpack',
-        `babel-loader?${JSON.stringify(babelLoaderQuery())}`
-      ]
-    }),
     new CleanPlugin([assetsPath], { root: projectRootPath }),
     // Seperate vendor code into a seperate file
     new webpack.optimize.CommonsChunkPlugin({

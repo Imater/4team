@@ -22,8 +22,7 @@ const plugins = [
   new HappyPack({
     verbose: false,
     loaders: [
-      'react-hot-loader/webpack',
-      `babel-loader?${JSON.stringify(babelLoaderQuery())}`
+      'babel-loader'
     ]
   }),
   new webpack.HotModuleReplacementPlugin(),
