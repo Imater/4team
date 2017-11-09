@@ -28,7 +28,7 @@
     "start": "npm run dev-render-on-client",
     "g": "plop",
     "dev-render-on-client": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev-render-on-client\"",
-    "lint": "eslint -c .eslintrc src api --ext js,jsx",
+    "lint": "eslint -c .eslintrc src api --ext js_off,jsx_off",
     "lint-errors": "eslint -c .eslintrc src api --quiet --ext js,jsx",
     "lint-fix": "eslint -c .eslintrc src api --ext js,jsx --fix",
     "lint-staged": "lint-staged",
@@ -280,7 +280,7 @@
       "blueprints"
     ],
     "moduleNameMapper": {
-      "^.+\\.styl$": "identity-obj-proxy",
+      "^.+\\.sss": "identity-obj-proxy",
       "^.+\\.svg$": "<rootDir>/webpack/svgMock.js"
     },
     "transform": {
