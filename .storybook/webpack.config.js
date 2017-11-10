@@ -1,6 +1,5 @@
 const path = require('path')
 const projectRootPath = path.resolve(__dirname, '../');
-const classNamesLoader = path.resolve(projectRootPath, './webpack/classnames-loader.js')
 const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('../webpack/webpack-isomorphic-tools'))
 const classFormat = '[path]_[local]'
@@ -29,7 +28,7 @@ module.exports = {
       { test: /\.json$/, loader: 'json-loader' },
       {
         test: /\.sss$/,
-        use: [classNamesLoader, 'style-loader'].concat(stylesLoader),
+        use: ['style-loader'].concat(stylesLoader),
       },
       { test: /\.css$/, loader: 'raw-loader' },
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
