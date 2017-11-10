@@ -4,7 +4,7 @@ import { node } from 'prop-types'
 import styles from './Box.sss'
 
 export default class Box extends PureComponent {
-  propTypes = {
+  static propTypes = {
     children: node
   }
 
