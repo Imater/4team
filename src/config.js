@@ -11,7 +11,7 @@ const environment = {
 
 export default Object.assign({
   host: process.env.HOST || 'localhost',
-  port: process.env.PORT,
+  port: process.env.PORT || '3000',
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT || 3031,
   apiServer: process.env.APISERVER || 'http://s.api.4team.ru:80',
