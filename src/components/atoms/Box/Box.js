@@ -32,6 +32,8 @@ export default class Box extends PureComponent {
     } = this.props
 
     const borderRadius = Math.round(size / 3.5)
+    const fontSize = Math.round(size / 2.25)
+    const lineHeight = `${size}px`
 
     return (
       <div
@@ -39,6 +41,8 @@ export default class Box extends PureComponent {
         style={{
           width: size,
           minHeight: size,
+          fontSize,
+          lineHeight,
           color,
           backgroundColor,
           borderTopRightRadius: isFirst ? borderRadius : null,
