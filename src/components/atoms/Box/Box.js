@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import { number, string, bool, node } from 'prop-types'
-import cx from 'classnames'
 
 import styles from './Box.sss'
 
@@ -32,13 +31,19 @@ export default class Box extends PureComponent {
       children
     } = this.props
 
+    const borderRadius = Math.round(size / 3.5)
+
     return (
       <div
-        className={cx(styles.box, {
-          [styles.box_isFirst]: isFirst,
-          [styles.box_isLast]: isLast
-        })}
-        style={{ width: size, minHeight: size, color, backgroundColor }}
+        className={styles.box}
+        style={{
+          width: size,
+          minHeight: size,
+          color,
+          backgroundColor,
+          borderTopRightRadius: isFirst ? borderRadius : null,
+          borderBottomLeftRadius: isLast ? borderRadius : null
+        }}
       >
         {children}
       </div>
