@@ -31,12 +31,9 @@ script:
 
 before_deploy:
   - echo -e "Host 4team.csssr.ru\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-
 notifications:
-  slack:
-    rooms:
-      - csssr:XBPvlWGQBmV1nvP1PEZPbxvg#relef_build
-  webhooks:
+    slack: csssr:kSI2Vox4UYEQYOEFN7LF8SrU
+    webhooks:
     urls:
       - http://home2-101.csssr.ru/deploy/Ln9F2HLUQc6euTy8552baYrRGsWKQUNx3J3X8jhC
     on_success: always
