@@ -9,6 +9,51 @@ storiesOf('Box', module)
       A
     </Box>
   ))
+  .addWithInfo('With FontAwesome', () => (
+    <Box>
+      <FontAwesome name='heart' />
+    </Box>
+  ))
+  .addWithInfo('Element size 20px', () => (
+    <Box size={20}>
+      A
+    </Box>
+  ))
+  .addWithInfo('Element size 20px with FontAwesome', () => (
+    <Box size={20}>
+      <FontAwesome name='heart' />
+    </Box>
+  ))
+  .addWithInfo('Element size 45px', () => (
+    <Box size={45}>
+      A
+    </Box>
+  ))
+  .addWithInfo('Element size 45px with FontAwesome', () => (
+    <Box size={45}>
+      <FontAwesome name='heart' />
+    </Box>
+  ))
+  .addWithInfo('Element size 70px', () => (
+    <Box size={70}>
+      A
+    </Box>
+  ))
+  .addWithInfo('Element size 70px with FontAwesome', () => (
+    <Box size={70}>
+      <FontAwesome name='heart' />
+    </Box>
+  ))
+  .addWithInfo('Element size 100px', () => (
+    <Box size={100}>
+      A
+    </Box>
+  ))
+  .addWithInfo('Element size 100px with FontAwesome', () => (
+    <Box size={100}>
+      <FontAwesome name='heart' />
+    </Box>
+  ))
   .addWithInfo('Red element', () => (
     <Box color='#FFFFFF' backgroundColor='#FC6B3E' >
       A
@@ -44,11 +89,6 @@ storiesOf('Box', module)
       </Box>
       <span style={{ marginLeft: '10px', width: '150px', fontSize: '16px', lineHeight: '20px', fontWeight: 'bold' }}>Заголовок строкa 1 Заголовок строкa 2 Заголовок строкa 3</span>
     </div>
-  ))
-  .addWithInfo('With FontAwesome', () => (
-    <Box>
-      <FontAwesome name='heart' />
-    </Box>
   ))
   .addWithInfo('Complex example', () => (
     <div>
