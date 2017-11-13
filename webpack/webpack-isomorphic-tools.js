@@ -88,6 +88,7 @@ module.exports = {
         }
       },
       parser: function(module, options, log) {
+        console.log('PARSER', module.source, options)
         if (options.development) {
           return WebpackIsomorphicToolsPlugin.css_modules_loader_parser(module, options, log);
         } else {
