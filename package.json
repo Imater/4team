@@ -41,7 +41,6 @@
     "test": "jest",
     "watch-client": "better-npm-run watch-client"
   },
-  "pre-commit": "lint-staged",
   "dependencies": {
     "@kadira/react-storybook-addon-info": "^3.4.0",
     "@kadira/storybook": "^2.35.3",
