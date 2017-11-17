@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { number, string, bool } from 'prop-types'
+import { number, string, bool, node } from 'prop-types'
 import cx from 'classnames'
 import Box from '../../atoms/Box'
 import FontAwesome from '../../atoms/FontAwesome'
@@ -12,14 +12,14 @@ export default class TabPinned extends PureComponent {
     color: string,
     backgroundColor: string,
     icon: string,
-    isDisabled: bool
+    isDisabled: bool,
+    children: node
   }
 
   static defaultProps = {
     size: 40,
     color: '#FFFFFF',
     backgroundColor: '#FC6B3E',
-    icon: 'heart',
     isDisabled: false
   }
 
@@ -29,8 +29,12 @@ export default class TabPinned extends PureComponent {
       color,
       backgroundColor,
       icon,
-      isDisabled
+      isDisabled,
+      children
     } = this.props
+
+    const isIcon = !!icon
+    const content = isIcon ? <FontAwesome name={icon} /> : children
 
     return (
       <div
@@ -40,7 +44,7 @@ export default class TabPinned extends PureComponent {
         style={{ width: size }}
       >
         <Box size={size} color={color} backgroundColor={backgroundColor}>
-          <FontAwesome name={icon} />
+          {content}
         </Box>
       </div>
     )
