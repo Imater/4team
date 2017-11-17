@@ -6,4 +6,7 @@ describe('TabPinned', () => {
   it('should render normal without any props supplied', () => {
     expect(shallow(<TabPinned />)).toHaveLength(1)
   })
+  it('should render normal with children content', () => {
+    expect(shallow(<TabPinned>TabPinned</TabPinned>).text()).toEqual('TabPinned')
+  })
 })
