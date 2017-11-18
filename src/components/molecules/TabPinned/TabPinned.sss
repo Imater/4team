@@ -1,0 +1,18 @@
+@import 'variables.sss'
+.tabPinned
+  display: flex
+
+  &_isDisabled
+    position: relative
+    z-index: 1
+
+    &::after
+      position: absolute
+      content: ''
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      background-color: color(var(--black) a(20%))
+      z-index: 10
+
