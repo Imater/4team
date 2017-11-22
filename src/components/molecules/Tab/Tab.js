@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { number, string, bool, oneOfType, instanceOf, func } from 'prop-types'
+import { number, string, bool, func } from 'prop-types'
 import cx from 'classnames'
 import Box from '../../atoms/Box'
 import FontAwesome from '../../atoms/FontAwesome'
@@ -13,7 +13,7 @@ export default class Tab extends PureComponent {
     backgroundColor: string,
     iconColor: string,
     iconBackgroundColor: string,
-    icon: oneOfType([string, instanceOf(FontAwesome)]),
+    icon: string,
     activeColor: string,
     isActive: bool,
     isDisabled: bool,
@@ -96,7 +96,7 @@ export default class Tab extends PureComponent {
               color={iconColor}
               backgroundColor={iconBackgroundColor}
             >
-              {icon}
+              <FontAwesome name={icon} />
             </Box>
           </div>
         }

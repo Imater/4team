@@ -1,9 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Tab from '../Tab'
-import FontAwesome from '../../atoms/FontAwesome'
-
-const iconFontAwesome = <FontAwesome icon={'truck'} />
 
 storiesOf('Tab', module)
   .addWithInfo('Default', () => (
@@ -25,13 +22,13 @@ storiesOf('Tab', module)
       </Tab>
     </div>
   ))
-  /* .addWithInfo('With text & default colors icon with FontAwesome', () => (
+  .addWithInfo('With text & default colors icon with FontAwesome', () => (
     <div style={{ width: '260px' }}>
-      <Tab icon={iconFontAwesome}>
+      <Tab icon='heart'>
         4 team
       </Tab>
     </div>
-  )) */
+  ))
   .addWithInfo('Disabled', () => (
     <div style={{ width: '260px' }}>
       <Tab icon={'A'} isDisabled>
@@ -76,7 +73,7 @@ storiesOf('Tab', module)
   ))
   .addWithInfo('Complex example', () => (
     <div style={{ width: '260px' }}>
-      <Tab icon={'A'} iconColor={'#000000'} iconBackgroundColor={'#FFF000'} isActive activeColor='#FFF000' isWithCross isHideOnHover>
+      <Tab icon={'truck'} iconColor={'#000000'} iconBackgroundColor={'#FFF000'} isActive activeColor='#FFF000' isWithCross isHideOnHover>
         Это просто какое-то очень длинное название
       </Tab>
     </div>
