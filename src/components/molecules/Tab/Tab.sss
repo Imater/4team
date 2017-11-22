@@ -1,0 +1,68 @@
+@import 'variables.sss'
+.tab
+  position: relative
+  display: flex
+  align-items: center
+  padding: 5px 10px
+  width: 100%
+  color: var(--white)
+  background-color: var(--black)
+  box-sizing: border-box
+
+  &_isActive &__activeMark
+    position: absolute
+    content: ''
+    bottom: 0
+    left: 0
+    right: 0
+    height: 2px
+
+
+  &_isDisabled
+    z-index: 1
+
+    &::after
+      position: absolute
+      content: ''
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      background-color: color(var(--black) a(20%))
+      z-index: 10
+
+  &__icon
+    margin-right: 10px
+
+  &__text
+    flex-shrink: 1
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+    &_tooltip
+      cursor: help
+
+  &__measuringText
+    position: absolute
+    top: -999px
+    left: 0
+    opacity: 0
+    visibility: hidden
+    z-index: -99
+
+  &__cross
+    position: relative
+    margin: 0
+    margin-left: auto
+    margin-right: -10px
+    padding: 0
+    border: none
+    background-color: transparent
+    cursor: pointer
+
+    &_hide
+      opacity: 0
+
+  &:hover &__cross_hide
+    opacity: 1
