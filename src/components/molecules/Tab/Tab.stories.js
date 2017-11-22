@@ -1,5 +1,5 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
+import { storiesOf, action } from '@storybook/react'
 import Tab from '../Tab'
 
 storiesOf('Tab', module)
@@ -68,6 +68,13 @@ storiesOf('Tab', module)
     <div style={{ width: '260px' }}>
       <Tab>
         Это просто какое-то очень длинное название
+      </Tab>
+    </div>
+  ))
+  .addWithInfo('Action', () => (
+    <div style={{ width: '260px' }}>
+      <Tab icon={'truck'} iconColor={'#000000'} iconBackgroundColor={'#FFF000'} onClick={action('click')} onClickOnCross={action('click')} isWithCross>
+        4 team
       </Tab>
     </div>
   ))
