@@ -27,7 +27,7 @@ storiesOf('FontAwesome', module)
         fontSize: 50
       }}
     >
-      <FontAwesome name='spinner' spin pulse {...{ '3x': true }} fw />
+      <FontAwesome name='spinner' spin pulse fixedWidth />
     </div>
   ))
   .addWithInfo('Black and big star', () => (
@@ -57,6 +57,9 @@ storiesOf('FontAwesome', module)
     >
       <FontAwesome />
     </div>
+  ))
+  .addWithInfo('One symbol', () => (
+    <FontAwesome name='A' />
   ))
   .addWithInfo('Icons library', () => (
     iconsLibrary.map(name => (
