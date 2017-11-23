@@ -16,12 +16,12 @@ export default class FontAwesome extends PureComponent {
       return null
     }
 
+    const content = name.length > 1
+      ? <FontAwesomeSymbol name={name} className={styles.fontAwesome} {...this.props} />
+      : <div className={styles.fontAwesome}>{name}</div>
+
     return (
-      <FontAwesomeSymbol
-        name={name}
-        className={styles.fontAwesome}
-        {...this.props}
-      />
+      content
     )
   }
 }
