@@ -17,7 +17,7 @@ export default class Icon extends PureComponent {
     }
 
     const content = name.length > 1
-      ? <FontAwesomeSymbol name={name} className={styles.con} {...this.props} />
+      ? <FontAwesomeSymbol name={name} className={styles.icon} {...this.props} />
       : <div className={styles.icon}>{name}</div>
 
     return (
