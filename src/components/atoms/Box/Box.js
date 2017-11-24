@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
-import { number, string, bool, node } from 'prop-types'
+import { number, string, bool } from 'prop-types'
+import FontAwesome from '../FontAwesome'
 
 import styles from './Box.sss'
 
@@ -8,9 +9,9 @@ export default class Box extends PureComponent {
     size: number,
     color: string,
     backgroundColor: string,
-    children: node,
     isFirst: bool,
-    isLast: bool
+    isLast: bool,
+    name: string
   }
 
   static defaultProps = {
@@ -28,7 +29,7 @@ export default class Box extends PureComponent {
       backgroundColor,
       isFirst,
       isLast,
-      children
+      name
     } = this.props
 
     const borderRadius = Math.round(size / 3.5)
@@ -49,7 +50,7 @@ export default class Box extends PureComponent {
           borderBottomLeftRadius: isLast ? borderRadius : null
         }}
       >
-        {children}
+        <FontAwesome name={name} />
       </div>
     )
   }
