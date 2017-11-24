@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { number, string, bool } from 'prop-types'
-import FontAwesome from '../FontAwesome'
+import Icon from '../Icon'
 
 import styles from './Box.sss'
 
@@ -50,7 +50,7 @@ export default class Box extends PureComponent {
           borderBottomLeftRadius: isLast ? borderRadius : null
         }}
       >
-        <FontAwesome name={name} />
+        <Icon name={name} />
       </div>
     )
   }

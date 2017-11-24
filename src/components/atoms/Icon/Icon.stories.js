@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import FontAwesome from '../FontAwesome'
+import Icon from '../Icon'
 
 const iconsLibrary = [
   'rocket',
@@ -17,9 +17,9 @@ const iconsLibrary = [
   'spinner'
 ]
 
-storiesOf('FontAwesome', module)
+storiesOf('Icon', module)
   .addWithInfo('Default', () => (
-    <FontAwesome />
+    <Icon />
   ))
   .addWithInfo('Loader', () => (
     <div
@@ -27,7 +27,7 @@ storiesOf('FontAwesome', module)
         fontSize: 50
       }}
     >
-      <FontAwesome name='spinner' spin pulse fixedWidth />
+      <Icon name='spinner' spin pulse fixedWidth />
     </div>
   ))
   .addWithInfo('Black and big star', () => (
@@ -41,7 +41,7 @@ storiesOf('FontAwesome', module)
         textAlign: 'center'
       }}
     >
-      <FontAwesome name='spinner' />
+      <Icon name='spinner' />
     </div>
   ))
   .addWithInfo('Without name', () => (
@@ -55,11 +55,11 @@ storiesOf('FontAwesome', module)
         textAlign: 'center'
       }}
     >
-      <FontAwesome />
+      <Icon />
     </div>
   ))
   .addWithInfo('One symbol', () => (
-    <FontAwesome name='A' />
+    <Icon name='A' />
   ))
   .addWithInfo('Icons library', () => (
     iconsLibrary.map(name => (
@@ -74,7 +74,7 @@ storiesOf('FontAwesome', module)
           textAlign: 'center'
         }}
       >
-        <FontAwesome {...{ name }} />
+        <Icon {...{ name }} />
       </span>
     ))
   ))

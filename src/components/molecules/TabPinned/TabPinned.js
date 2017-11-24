@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { number, string, bool, node } from 'prop-types'
 import cx from 'classnames'
 import Box from '../../atoms/Box'
-import FontAwesome from '../../atoms/FontAwesome'
+import Icon from '../../atoms/Icon'
 
 import styles from './TabPinned.sss'
 
@@ -34,7 +34,7 @@ export default class TabPinned extends PureComponent {
     } = this.props
 
     const isIcon = !!icon
-    const content = isIcon ? <FontAwesome name={icon} /> : children
+    const content = isIcon ? <Icon name={icon} /> : children
 
     return (
       <div

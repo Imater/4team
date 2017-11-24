@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import FontAwesome from '../FontAwesome'
+import Icon from '../Icon'
 
-describe('FontAwesome', () => {
+describe('Icon', () => {
   it('should render normal without any props supplied', () => {
-    expect(shallow(<FontAwesome />)).toHaveLength(1)
+    expect(shallow(<Icon />)).toHaveLength(1)
   })
 })

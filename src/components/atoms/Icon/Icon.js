@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react'
 import FontAwesomeSymbol from 'react-fontawesome'
 import { string } from 'prop-types'
 
-import styles from './FontAwesome.sss'
+import styles from './Icon.sss'
 
-export default class FontAwesome extends PureComponent {
+export default class Icon extends PureComponent {
   static propTypes = {
     name: string
   }
@@ -17,8 +17,8 @@ export default class FontAwesome extends PureComponent {
     }
 
     const content = name.length > 1
-      ? <FontAwesomeSymbol name={name} className={styles.fontAwesome} {...this.props} />
-      : <div className={styles.fontAwesome}>{name}</div>
+      ? <FontAwesomeSymbol name={name} className={styles.con} {...this.props} />
+      : <div className={styles.icon}>{name}</div>
 
     return (
       content

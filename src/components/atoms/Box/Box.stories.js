@@ -9,31 +9,31 @@ storiesOf('Box', module)
   .addWithInfo('With one symbol', () => (
     <Box name='A' />
   ))
-  .addWithInfo('With FontAwesome', () => (
+  .addWithInfo('With Icon', () => (
     <Box name='heart' />
   ))
   .addWithInfo('Element size 20px', () => (
     <Box size={20} name='A' />
   ))
-  .addWithInfo('Element size 20px with FontAwesome', () => (
+  .addWithInfo('Element size 20px with Icon', () => (
     <Box size={20} name='heart' />
   ))
   .addWithInfo('Element size 45px', () => (
     <Box size={45} name='A' />
   ))
-  .addWithInfo('Element size 45px with FontAwesome', () => (
+  .addWithInfo('Element size 45px with Icon', () => (
     <Box size={45} name='heart' />
   ))
   .addWithInfo('Element size 70px', () => (
     <Box size={70} name='A' />
   ))
-  .addWithInfo('Element size 70px with FontAwesome', () => (
+  .addWithInfo('Element size 70px with Icon', () => (
     <Box size={70} name='heart' />
   ))
   .addWithInfo('Element size 100px', () => (
     <Box size={100} name='A' />
   ))
-  .addWithInfo('Element size 100px with FontAwesome', () => (
+  .addWithInfo('Element size 100px with Icon', () => (
     <Box size={100} name='heart' />
   ))
   .addWithInfo('Red element', () => (
