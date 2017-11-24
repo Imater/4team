@@ -22,7 +22,7 @@ storiesOf('Tab', module)
       </Tab>
     </div>
   ))
-  .addWithInfo('With text & default colors icon with FontAwesome', () => (
+  .addWithInfo('With text & default colors icon with Icon', () => (
     <div style={{ width: '260px' }}>
       <Tab icon='heart'>
         4 team

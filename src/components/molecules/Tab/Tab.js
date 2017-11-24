@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { number, string, bool, func } from 'prop-types'
 import cx from 'classnames'
 import Box from '../../atoms/Box'
-import FontAwesome from '../../atoms/FontAwesome'
+import Icon from '../../atoms/Icon'
 
 import styles from './Tab.sss'
 
@@ -96,7 +96,7 @@ export default class Tab extends PureComponent {
               color={iconColor}
               backgroundColor={iconBackgroundColor}
             >
-              <FontAwesome name={icon} />
+              <Icon name={icon} />
             </Box>
           </div>
         }
@@ -131,7 +131,7 @@ export default class Tab extends PureComponent {
               color
             }}
           >
-            <FontAwesome name='close' />
+            <Icon name='close' />
           </button>
         }
       </div>
