@@ -3,7 +3,6 @@ require('babel-polyfill')
 const HappyPack = require('happypack')
 const path = require('path')
 const webpack = require('webpack')
-const babelLoaderQuery = require('./babelLoaderQuery')
 
 const host = (process.env.HOST || 'localhost')
 const port = parseInt(process.env.PORT, 10) || 3001
