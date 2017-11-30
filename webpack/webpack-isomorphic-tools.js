@@ -69,12 +69,10 @@ module.exports = {
         if (options.development) {
           // in development mode there's webpack "style-loader",
           // so the module.name is not equal to module.name
-          console.log('FILTER DEV', module.source, options)
           return WebpackIsomorphicToolsPlugin.style_loader_filter(module, regex, options, log);
         } else {
           // in production mode there's no webpack "style-loader",
           // so the module.name will be equal to the asset path
-          console.log('FILTER PROD', module.source, options)
           return regex.test(module.name);
         }
       },
@@ -90,7 +88,6 @@ module.exports = {
         }
       },
       parser: function(module, options, log) {
-        console.log('PARSER', module.source, options)
         if (options.development) {
           return WebpackIsomorphicToolsPlugin.css_modules_loader_parser(module, options, log);
         } else {
