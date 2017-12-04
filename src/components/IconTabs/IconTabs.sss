@@ -1,0 +1,37 @@
+@import 'variables.sss'
+
+.iconTabs
+  position: relative
+  display: flex
+  align-items: center
+
+.iconTabsItem
+  color: var(--gray)
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  cursor: pointer
+
+  &:not(:last-child)
+    margin-right: 20px
+
+  &_active
+    color: var(--black)
+
+.iconTabsInput
+  display: none
+
+.iconTabsIcon
+  display: block
+  font-size: 30px
+  color: inherit
+  font-family: FontAwesome
+  line-height: inherit
+  cursor: inherit
+
+.iconTabsTitle
+  display: block
+  font-size: 14px
+  color: inherit
+  cursor: inherit
