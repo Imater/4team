@@ -14,8 +14,6 @@ const assetsPath = path.resolve(projectRootPath, './static/dist')
 const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
 
-const classNamesLoader = path.resolve(projectRootPath, './webpack/classnames-loader.js')
-
 const classFormat = '[path]_[local]'
 
 const stylesLoader = [

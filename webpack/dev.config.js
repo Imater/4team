@@ -10,7 +10,6 @@ const projectRootPath = path.resolve(__dirname, '../');
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
-const classNamesLoader = path.resolve(projectRootPath, './webpack/classnames-loader.js')
 
 const isVendorModule = (module) => {
   // returns true for everything in node_modules
@@ -89,7 +88,7 @@ module.exports = {
       },
       {
         test: /\.sss$/,
-        use: [classNamesLoader, 'style-loader'].concat(stylesLoader),
+        use: ['style-loader'].concat(stylesLoader),
       },
       {
         test: /\.(jpg|png|svg)(\?v=\d+\.\d+\.\d+)?$/,
