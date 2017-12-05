@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { array } from 'prop-types'
+import { array, string, func } from 'prop-types'
 import cx from 'classnames'
 import FontAwesomeSymbol from 'react-fontawesome'
 import R from 'ramda'
@@ -8,32 +8,30 @@ import styles from './IconTabs.sss'
 
 export default class IconTabs extends PureComponent {
   static propTypes = {
-    items: array
+    items: array,
+    value: string,
+    onChange: func
   }
 
   static defaultProps = {
-    items: []
-  }
-
-  state = {
-    value: 'decor'
+    items: [],
+    value: 'decor',
+    onChange: () => { }
   }
 
   handleClick = name => () => {
-    this.setState({
-      value: name
-    })
+    this.props.onChange(name)
   }
 
   renderIcon = item => (
     <button
       className={cx(styles.iconTabsItem, {
-        [styles.iconTabsItem_active]: this.state.value === R.prop('name', item)
+        [styles.iconTabsItem_active]: this.props.value === R.prop('name', item)
       })}
       type='button'
       name={R.prop('name', item)}
-      onClick={this.handleClick(R.prop('name', item))}
       key={R.prop('id', item)}
+      onClick={this.handleClick(R.prop('name', item))}
     >
       <FontAwesomeSymbol name={R.prop('iconName', item)} className={styles.iconTabsIcon} />
       <p className={styles.iconTabsTitle}>{R.prop('title', item)}</p>
@@ -45,11 +43,6 @@ export default class IconTabs extends PureComponent {
 
     return (
       <div className={styles.iconTabs}>
-        <input
-          className={styles.iconTabsInput}
-          type='text'
-          defaultValue={this.state.value}
-        />
         {items.map(this.renderIcon)}
       </div>
     )
