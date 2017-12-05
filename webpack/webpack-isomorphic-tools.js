@@ -69,10 +69,12 @@ module.exports = {
         if (options.development) {
           // in development mode there's webpack "style-loader",
           // so the module.name is not equal to module.name
+          console.log('DEV_MODE')
           return WebpackIsomorphicToolsPlugin.style_loader_filter(module, regex, options, log);
         } else {
           // in production mode there's no webpack "style-loader",
           // so the module.name will be equal to the asset path
+          console.log('PRODUCTION_MODE')
           return regex.test(module.name);
         }
       },
