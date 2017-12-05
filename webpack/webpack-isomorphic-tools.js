@@ -13,7 +13,6 @@ module.exports = {
   // debug: true,
 
   patch_require: true,
-
   assets: {
     images: {
       extensions: [
