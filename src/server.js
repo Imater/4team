@@ -185,7 +185,6 @@ app.use((req, res) => {
 
   const historyNotSync = createHistory(req.originalUrl)
   const assets = webpackIsomorphicTools.assets()
-  assets.styles.datePicker = '/DatePicker.css'
   assets.styles.fonts = '/fonts/fonts.css'
 
   const store = createStore(historyNotSync, { cookie }, {
