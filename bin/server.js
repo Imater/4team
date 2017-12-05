@@ -9,6 +9,7 @@ global.__CLIENT__ = false
 global.__SERVER__ = true
 global.__DISABLE_SSR__ = process.env.__DISABLE_SSR__ || false
 global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production'
+console.log(`global.__DEVELOPMENT__ = `, global.__DEVELOPMENT__)
 
 if (__DEVELOPMENT__ && !global.__DISABLE_SSR__) {
   console.log('piping active') // eslint-disable-line no-console
