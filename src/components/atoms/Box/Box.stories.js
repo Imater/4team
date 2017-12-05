@@ -9,6 +9,15 @@ storiesOf('Box', module)
   .addWithInfo('With one symbol', () => (
     <Box name='A' />
   ))
+  .addWithInfo('With one symbol as children', () => (
+    <Box>B</Box>
+  ))
+  .addWithInfo('With long children', () => (
+    <Box>Box</Box>
+  ))
+  .addWithInfo('With very long children', () => (
+    <Box>Box is now very big</Box>
+  ))
   .addWithInfo('With Icon', () => (
     <Box name='heart' />
   ))

@@ -9,6 +9,7 @@ export default class Box extends PureComponent {
     size: number,
     color: string,
     backgroundColor: string,
+    children: string,
     isFirst: bool,
     isLast: bool,
     name: string
@@ -29,6 +30,7 @@ export default class Box extends PureComponent {
       backgroundColor,
       isFirst,
       isLast,
+      children,
       name
     } = this.props
 
@@ -51,6 +53,7 @@ export default class Box extends PureComponent {
         }}
       >
         <Icon name={name} />
+        {children}
       </div>
     )
   }

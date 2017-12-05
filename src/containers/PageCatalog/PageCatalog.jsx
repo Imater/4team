@@ -7,7 +7,7 @@ export default class PageCatalog extends PureComponent {
     return (
       <div>
         <AdaptiveHeader />
-        <Box>1</Box>
+        <Box name={'circle'} />
         <Box>2</Box>
         <Box>3</Box>
         <Box>4</Box>
