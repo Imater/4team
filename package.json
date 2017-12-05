@@ -2,7 +2,7 @@
   "name": "4team",
   "version": "0.1.1",
   "private": true,
-  "description": "Big learning store",
+  "description": "Big tasks and notes store",
   "keywords": [
     "babel",
     "express",
