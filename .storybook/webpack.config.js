@@ -8,9 +8,6 @@ const stylesLoader = [
   'postcss-loader'
 ];
 module.exports = {
-  plugins:  [
-    webpackIsomorphicToolsPlugin.development()
-  ],
   module: {
     rules: [
       {
