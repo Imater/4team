@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Tab from '../Tab'
+import IconTabs from '../IconTabs'
 
-describe('TabPinned', () => {
+describe('IconTabs', () => {
   it('should render normal without any props supplied', () => {
-    expect(shallow(<Tab />)).toHaveLength(1)
+    expect(shallow(<IconTabs />)).toHaveLength(1)
   })
 })
