@@ -69,12 +69,12 @@ module.exports = {
         if (options.development) {
           // in development mode there's webpack "style-loader",
           // so the module.name is not equal to module.name
-          console.log('DEV_MODE')
+          console.log('DEV_MODE', options.development)
           return WebpackIsomorphicToolsPlugin.style_loader_filter(module, regex, options, log);
         } else {
           // in production mode there's no webpack "style-loader",
           // so the module.name will be equal to the asset path
-          console.log('PRODUCTION_MODE')
+          console.log('PROD_MODE', options.development)
           return regex.test(module.name);
         }
       },
@@ -82,10 +82,12 @@ module.exports = {
         if (options.development) {
           // in development mode there's webpack "style-loader",
           // so the module.name is not equal to module.name
+          console.log('DEV_MODE path', options.development)
           return WebpackIsomorphicToolsPlugin.style_loader_path_extractor(module, options, log);
         } else {
           // in production mode there's no webpack "style-loader",
           // so the module.name will be equal to the asset path
+          console.log('PROD_MODE path', options.development)
           return module.name;
         }
       },
