@@ -11,7 +11,7 @@ export default class PageCatalog extends PureComponent {
         <Box>2</Box>
         <Box>3</Box>
         <Box>4</Box>
-        <Box>9</Box>
+        <Box>6</Box>
       </div>
     )
   }
