@@ -4,7 +4,7 @@ import cx from 'classnames'
 import Box from '../../atoms/Box'
 import Icon from '../../atoms/Icon'
 
-import styles from './Tab.sss'
+import styles from './Tab.styl'
 
 export default class Tab extends PureComponent {
   static propTypes = {

@@ -38,8 +38,8 @@ const generator = kind => ({
     },
     {
       type: 'add',
-      path: `./src/components/${kind}s/{{properCase name}}/{{properCase name}}.sss`,
-      templateFile: './sss.hbs',
+      path: `./src/components/${kind}s/{{properCase name}}/{{properCase name}}.styl`,
+      templateFile: './styl.hbs',
       abortOnFail: true
     },
     {

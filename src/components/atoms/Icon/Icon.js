@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import FontAwesomeSymbol from 'react-fontawesome'
 import { string } from 'prop-types'
 
-import styles from './Icon.sss'
+import styles from './Icon.styl'
 
 export default class Icon extends PureComponent {
   static propTypes = {

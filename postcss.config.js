@@ -5,7 +5,7 @@ const root = path.join(__dirname, './src')
 /* eslint-disable global-require */
 /* eslint-disable import/no-extraneous-dependenies */
 const result = webpack => ({
-  parser: 'sugarss',
+  parser: 'stylus',
   plugins: [
     require('postcss-import')({
       addDependencyTo: webpack,

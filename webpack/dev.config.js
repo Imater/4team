@@ -52,7 +52,7 @@ const classFormat = '[path]_[local]'
 
 const stylesLoader = [
   `css-loader?modules&importLoaders=1&localIdentName=${classFormat}`,
-  'postcss-loader'
+  'stylus-loader'
 ];
 
 module.exports = {
@@ -60,6 +60,7 @@ module.exports = {
   entry: {
     'main': [
       'react-hot-loader/patch',
+      './src/theme/optimize.js',
       'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr',
       './src/client.js'
     ]
@@ -75,7 +76,7 @@ module.exports = {
       'src',
       'node_modules',
     ],
-    extensions: ['.json', '.js', '.jsx'],
+    extensions: ['.json', '.js', '.jsx', '.styl'],
   },
   module: {
     loaders: [
@@ -87,7 +88,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.sss$/,
+        test: /\.styl$/,
         use: ['style-loader'].concat(stylesLoader),
       },
       {

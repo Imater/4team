@@ -18,7 +18,7 @@ const classFormat = '[path]_[local]'
 
 const stylesLoader = [
   `css-loader?modules&importLoaders=1&minimize=true&localIdentName=${classFormat}`,
-  'postcss-loader'
+  'stylus-loader'
 ]
 
 module.exports = {
@@ -26,6 +26,7 @@ module.exports = {
   context: path.resolve(__dirname, '..'),
   entry: {
     'main': [
+      './src/theme/optimize.js',
       './src/client.js'
     ]
   },
@@ -40,7 +41,7 @@ module.exports = {
       { test: /\.js[x]?$/, exclude: /node_modules/, loaders: [strip.loader('debug'), 'babel-loader'] },
       { test: /\.json$/, loader: 'json-loader' },
       {
-        test: /\.sss$/,
+        test: /\.styl$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [].concat(stylesLoader).join('!'),

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { number, string, bool } from 'prop-types'
 import Icon from '../Icon'
 
-import styles from './Box.sss'
+import styles from './Box.styl'
 
 export default class Box extends PureComponent {
   static propTypes = {

@@ -280,7 +280,7 @@
       "blueprints"
     ],
     "moduleNameMapper": {
-      "^.+\\.sss": "identity-obj-proxy",
+      "^.+\\.styl": "identity-obj-proxy",
       "^.+\\.svg$": "<rootDir>/webpack/svgMock.js"
     },
     "transform": {

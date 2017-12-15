@@ -4,7 +4,7 @@ import cx from 'classnames'
 import FontAwesomeSymbol from 'react-fontawesome'
 import R from 'ramda'
 
-import styles from './IconTabs.sss'
+import styles from './IconTabs.styl'
 
 export default class IconTabs extends PureComponent {
   static propTypes = {

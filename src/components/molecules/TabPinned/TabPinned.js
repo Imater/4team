@@ -4,7 +4,7 @@ import cx from 'classnames'
 import Box from '../../atoms/Box'
 import Icon from '../../atoms/Icon'
 
-import styles from './TabPinned.sss'
+import styles from './TabPinned.styl'
 
 export default class TabPinned extends PureComponent {
   static propTypes = {

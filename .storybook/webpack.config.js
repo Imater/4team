@@ -5,7 +5,7 @@ const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('.
 const classFormat = '[path]_[local]'
 const stylesLoader = [
   `css-loader?modules&importLoaders=1&minimize=true&localIdentName=${classFormat}`,
-  'postcss-loader'
+  'stylus-loader'
 ];
 module.exports = {
   module: {
@@ -24,7 +24,7 @@ module.exports = {
       },
       { test: /\.json$/, loader: 'json-loader' },
       {
-        test: /\.sss$/,
+        test: /\.styl$/,
         use: ['style-loader'].concat(stylesLoader),
       },
       { test: /\.css$/, loader: 'raw-loader' },

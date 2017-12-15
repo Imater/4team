@@ -1,5 +1,5 @@
 import React, { PureComponent, PropTypes } from 'react'
-import styles from './AdaptiveHeader.sss'
+import styles from './AdaptiveHeader.styl'
 
 class AdaptiveHeader extends PureComponent {
   static propTypes = {
