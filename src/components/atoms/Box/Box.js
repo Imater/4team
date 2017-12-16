@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { number, string, bool } from 'prop-types'
+import { number, string, bool, oneOfType, node } from 'prop-types'
 import Icon from '../Icon'
 
 import styles from './Box.styl'
@@ -9,7 +9,7 @@ export default class Box extends PureComponent {
     size: number,
     color: string,
     backgroundColor: string,
-    children: string,
+    children: oneOfType([string, node]),
     isFirst: bool,
     isLast: bool,
     name: string

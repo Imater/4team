@@ -1,5 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react'
 import styles from './AdaptiveHeader.styl'
+import Tabs from '../Tabs/Tabs'
 
 class AdaptiveHeader extends PureComponent {
   static propTypes = {
@@ -7,11 +8,9 @@ class AdaptiveHeader extends PureComponent {
   }
   render() {
     return (
-      <div>
         <div className={styles.adaptiveHeader}>
-          Feed me with components
+          <Tabs />
         </div>
-      </div>
     )
   }
 }

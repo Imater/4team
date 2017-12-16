@@ -3,6 +3,7 @@ import { routerReducer } from 'react-router-redux'
 import { reducer as reduxAsyncConnect } from 'redux-async-connect'
 import { reducer as form } from 'redux-form'
 import basket from './basket'
+import panel from './panel'
 import userAgent from './userAgent'
 
 const appReducers = combineReducers({
@@ -10,7 +11,8 @@ const appReducers = combineReducers({
   form,
   reduxAsyncConnect,
   routing: routerReducer,
-  userAgent
+  userAgent,
+  panel
 })
 
 export default appReducers

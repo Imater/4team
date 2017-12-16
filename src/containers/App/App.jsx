@@ -8,7 +8,7 @@ import styles from './App.styl'
 @connect()
 @pureRender
 class App extends Component {
-  propTypes = {
+  static propTypes = {
     children: PropTypes.any
   }
   render() {
