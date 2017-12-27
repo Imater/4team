@@ -8,9 +8,9 @@ class AdaptiveHeader extends PureComponent {
   }
   render() {
     return (
-        <div className={styles.adaptiveHeader}>
-          <Tabs />
-        </div>
+      <div className={styles.adaptiveHeader}>
+        <Tabs />
+      </div>
     )
   }
 }

@@ -37,7 +37,7 @@ export default class Tabs extends PureComponent {
           <TabPinned color='#FFFFFF' backgroundColor='#4443DC' icon='car' isDisabled />
         </div>
         <div className={styles.tabWrapper}>
-          <div style={{width: '260px'}}>
+          <div style={{ width: '260px' }}>
             <Tab
               icon='truck'
               iconColor='#000000'
@@ -49,7 +49,7 @@ export default class Tabs extends PureComponent {
               Проверка СМС
             </Tab>
           </div>
-          <div style={{width: '260px'}}>
+          <div style={{ width: '260px' }}>
             <Tab
               icon='circle'
               iconColor='black'
