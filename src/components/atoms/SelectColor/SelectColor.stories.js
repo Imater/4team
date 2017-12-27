@@ -22,5 +22,5 @@ storiesOf('SelectColor', module)
     <SelectColor colorsArray={colorsArray} />
   ))
   .addWithInfo('Color choosed', () => (
-    <SelectColor colorsArray={colorsArray} currentColorIndex={4} />
+    <SelectColor colorsArray={colorsArray} currentColorIndex={11} />
   ))

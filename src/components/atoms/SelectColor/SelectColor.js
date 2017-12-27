@@ -10,12 +10,12 @@ export default class SelectColor extends PureComponent {
     size: number,
     colorsArray: arrayOf(arrayOf(string)),
     currentColorIndex: number,
-    onChangeColor: func
+    onChange: func
   }
 
   static defaultProps = {
     size: 36,
-    onChangeColor: () => {}
+    onChange: () => {}
   }
 
   render() {
@@ -23,7 +23,7 @@ export default class SelectColor extends PureComponent {
       size,
       colorsArray,
       currentColorIndex,
-      onChangeColor
+      onChange
     } = this.props
 
     const renderColorBox = (color, backgroundColor, index, isActive) => ((
@@ -47,7 +47,7 @@ export default class SelectColor extends PureComponent {
           name={'colorTheme'}
           type={'radio'}
           checked={isActive}
-          onChange={onChangeColor}
+          onChange={onChange}
         />
         { isActive &&
           <div
