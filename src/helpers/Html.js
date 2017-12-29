@@ -33,6 +33,7 @@ const Html = ({ assets, component, store }) => {
           integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN'
           crossOrigin='anonymous'
         />
+        <script src="https://p.trellocdn.com/embed.min.js" />
         <link rel='shortcut icon' href='/favicon.png' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
 
