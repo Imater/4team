@@ -97,6 +97,7 @@
     "raw-loader": "^0.5.1",
     "react": "^15.6.1",
     "react-addons-perf": "^15.4.2",
+    "react-bootstrap": "^0.31.5",
     "react-container-query": "0.6.0",
     "react-cookie": "^0.4.6",
     "react-datepicker": "^0.52.0",
