@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes as pt } from 'react'
 import pureRender from 'pure-render-decorator'
 import { connect } from 'react-redux'
 import { asyncConnect } from 'redux-async-connect'
@@ -7,17 +7,18 @@ import styles from './App.styl'
 @asyncConnect([{ promise: () => Promise.resolve() }])
 @connect()
 @pureRender
-class App extends Component {
+export default class App extends Component {
   static propTypes = {
-    children: PropTypes.any
+    children: pt.any
   }
+
   render() {
+    const { children } = this.props
+
     return (
       <div className={styles.app}>
-        {this.props.children}
+        {children}
       </div>
     )
   }
 }
-
-export default App

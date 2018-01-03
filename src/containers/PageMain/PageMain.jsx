@@ -1,20 +1,17 @@
 import React, { PureComponent } from 'react'
-import Box from 'components/atoms/Box'
-import AdaptiveHeader from 'components/molecules/AdaptiveHeader'
-import Iframe from '../../components/atoms/Iframe'
+import Iframe from 'components/atoms/Iframe'
 
-export default class PageCatalog extends PureComponent {
+export default class PageMain extends PureComponent {
   state = {
     url: 'http://jira.relef.ru/browse/CSSSR-725'
   }
-  handleClick = url => () => this.setState({
-    url
-  })
+
+  handleClick = url => () =>
+    this.setState({ url })
+
   render() {
     return (
       <div>
-        <AdaptiveHeader />
-        <Box name={'circle'} />
         <button onClick={this.handleClick('http://jira.relef.ru/browse/CSSSR-723')}>CSSSR-723</button>
         <br />
         <button onClick={this.handleClick('http://jira.relef.ru/browse/CSSSR-722')}>CSSSR-722</button>
@@ -29,7 +26,9 @@ export default class PageCatalog extends PureComponent {
         <br />
         <button onClick={this.handleClick('http://jira.relef.ru/browse/RO-230')}>RO-230</button>
         <br />
+
         <h1>{this.state.url}</h1>
+
         <div style={{ height: '700px' }}>
           <Iframe width='100%' height='100%' url={this.state.url} />
         </div>
