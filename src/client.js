@@ -15,9 +15,11 @@ import { useScroll } from 'react-router-scroll'
 import cookie from 'react-cookie'
 import Perf from 'react-addons-perf'
 import { Provider as ProviderTunnel } from 'react-tunnel'
+import Split from 'split.js'
 import getRoutes from './routes'
 
 window.Perf = Perf
+window.Split = Split
 
 const dest = document.getElementById('content')
 const store = createStore(browserHistory, { cookie }, window.__data)
@@ -96,4 +98,3 @@ if (process.env.NODE_ENV !== 'production') {
   //   console.log(`renderEnd_${this.props.id}`);
   // }
 }
-
