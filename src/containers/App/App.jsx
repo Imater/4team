@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import pureRender from 'pure-render-decorator'
 import { connect } from 'react-redux'
 import { asyncConnect } from 'redux-async-connect'
+
+import Auth from 'containers/Auth'
 import Split from 'components/Split'
 import Iframe from 'components/Iframe'
 import LeftPanel from 'components/LeftPanel'
@@ -74,12 +76,17 @@ export default class App extends Component {
   }
 
   render() {
+    const isAuthorized = false
+
     return (
       <div className={styles.app}>
-        <Split
-          left={this.renderLeftPanel()}
-          right={<Iframe url='http://jira.relef.ru/browse/CSSSR-718' />}
-        />
+        {!isAuthorized && <Auth />}
+
+        {isAuthorized &&
+          <Split
+            left={this.renderLeftPanel()}
+            right={<Iframe url='http://jira.relef.ru/browse/CSSSR-718' />}
+          />}
       </div>
     )
   }
