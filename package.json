@@ -132,7 +132,6 @@
     "redux-devtools-log-monitor": "^1.3.0",
     "redux-form": "7.2.1",
     "redux-loop": "2.2.2",
-    "remote-redux-devtools": "^0.5.12",
     "reselect": "^3.0.1",
     "scrollbarwidth": "^0.1.0",
     "serialize-javascript": "^1.1.2",
