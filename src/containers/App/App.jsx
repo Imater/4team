@@ -80,7 +80,10 @@ export default class App extends Component {
 
     return (
       <div className={styles.app}>
-        {!isAuthorized && <Auth />}
+        {!isAuthorized &&
+          <div className={styles.auth}>
+            <Auth />
+          </div>}
 
         {isAuthorized &&
           <Split
