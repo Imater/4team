@@ -19,12 +19,12 @@ const handleSetToken = (state, payload) =>
 
 const handleSetAuthSuccess = state => ({
   ...state,
-  authorization: true
+  isAuthorized: true
 })
 
 const handleSetAuthFailure = state => ({
   ...state,
-  authorization: false
+  isAuthorized: false
 })
 
 const reducer = createReducer(on => {
