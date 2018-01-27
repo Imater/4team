@@ -5,6 +5,8 @@ import { fetch as fetchUserData } from 'redux/modules/userData'
 const initialState = {}
 
 export const setToken = createAction('auth/SET_TOKEN')
+export const setAuthSuccess = createAction('auth/SET_AUTH_SUCCESS')
+export const setAuthFailure = createAction('auth/SET_AUTH_FAILURE')
 
 const handleSetToken = (state, payload) =>
   loop(
@@ -15,8 +17,20 @@ const handleSetToken = (state, payload) =>
     Effects.call(fetchUserData, payload.token)
   )
 
+const handleSetAuthSuccess = state => ({
+  ...state,
+  authorization: true
+})
+
+const handleSetAuthFailure = state => ({
+  ...state,
+  authorization: false
+})
+
 const reducer = createReducer(on => {
   on(setToken, handleSetToken)
+  on(setAuthSuccess, handleSetAuthSuccess)
+  on(setAuthFailure, handleSetAuthFailure)
 }, initialState)
 
 export default reducer
