@@ -1,19 +1,22 @@
 import { createAction, createReducer } from 'redux-act'
+import { loop, Effects } from 'redux-loop'
+import { fetch as fetchUserData } from 'redux/modules/userData'
 
-export const sendToken = createAction('4team/basket/SEND_TOKEN')
+const initialState = {}
 
-const initialState = {
-  isLoading: false,
-  isLoaded: false
-}
+export const setToken = createAction('auth/SET_TOKEN')
 
-const handleSendToken = (state, payload) => ({
-  ...state,
-  isLoading: true
-})
+const handleSetToken = (state, payload) =>
+  loop(
+    {
+      ...state,
+      token: payload.token
+    },
+    Effects.call(fetchUserData, payload.token)
+  )
 
 const reducer = createReducer(on => {
-  on(sendToken, handleSendToken)
+  on(setToken, handleSetToken)
 }, initialState)
 
 export default reducer

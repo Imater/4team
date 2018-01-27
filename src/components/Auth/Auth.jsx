@@ -40,6 +40,8 @@ export default class Auth extends PureComponent {
           placeholder='API token'
           component={this.renderInput}
         />
+
+        <button type='hidden' />
       </form>
     )
   }
