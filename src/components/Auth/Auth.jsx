@@ -1,9 +1,12 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
 import { Field } from 'redux-form'
+import cn from 'classnames'
 import styles from './Auth.styl'
 
 export default class Auth extends PureComponent {
   static propTypes = {
+    isAuthorized: pt.bool,
+    submitSucceeded: pt.bool,
     handleSubmit: pt.func.isRequired
   }
 
@@ -12,11 +15,15 @@ export default class Auth extends PureComponent {
   }
 
   renderInput = field => {
+    const { isAuthorized, submitSucceeded } = this.props
     const { type, placeholder, input } = field
+    const isError = !isAuthorized && submitSucceeded
 
     return (
       <input
-        className={styles.input}
+        className={cn(styles.input, {
+          [styles.input_error]: isError
+        })}
         type={type}
         placeholder={placeholder}
         {...input}
@@ -25,9 +32,7 @@ export default class Auth extends PureComponent {
   }
 
   render() {
-    const {
-      handleSubmit
-    } = this.props
+    const { handleSubmit } = this.props
 
     return (
       <form
@@ -41,7 +46,7 @@ export default class Auth extends PureComponent {
           component={this.renderInput}
         />
 
-        <button type='hidden' />
+        <button className={styles.submit} />
       </form>
     )
   }
