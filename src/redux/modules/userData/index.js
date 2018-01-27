@@ -1,6 +1,8 @@
 import { createAction, createReducer } from 'redux-act'
 import { loop, Effects } from 'redux-loop'
 import axios from 'axios'
+import R from 'ramda'
+import { setAuthSuccess, setAuthFailure } from 'redux/modules/auth'
 
 const initialState = {
   isLoading: false,
@@ -31,21 +33,29 @@ const handleFetch = (state, payload) =>
     Effects.promise(request, payload)
   )
 
-const handleFetchSuccess = (state, payload) => {
+const handleFetchSuccess = (state, payload) =>
+  loop(
+    {
+      ...state,
+      isLoading: false,
+      isLoaded: true,
+      companyId: R.path(['data', 'data', 'default_wid'], payload),
+      email: R.path(['data', 'data', 'email'], payload),
+      error: ''
+    },
+    Effects.call(setAuthSuccess)
+  )
 
-  return {
-    ...state,
-    isLoading: false,
-    isLoaded: true,
-    data: payload
-  }
-}
-
-const handleFetchFailure = (state, payload) => ({
-  ...state,
-  isLoading: false,
-  isLoaded: false
-})
+const handleFetchFailure = (state, payload) =>
+  loop(
+    {
+      ...state,
+      isLoading: false,
+      isLoaded: false,
+      error: payload.message
+    },
+    Effects.call(setAuthFailure)
+  )
 
 const reducer = createReducer(on => {
   on(fetch, handleFetch)
