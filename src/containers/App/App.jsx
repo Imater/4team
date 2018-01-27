@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes as pt } from 'react'
 import pureRender from 'pure-render-decorator'
 import { connect } from 'react-redux'
 import { asyncConnect } from 'redux-async-connect'
@@ -60,9 +60,21 @@ const tasks = [
 ]
 
 @asyncConnect([{ promise: () => Promise.resolve() }])
-@connect()
+@connect(
+  ({
+    auth: {
+      isAuthorized
+    }
+  }) => ({
+    isAuthorized
+  })
+)
 @pureRender
 export default class App extends Component {
+  static propTypes = {
+    isAuthorized: pt.bool
+  }
+
   renderLeftPanel() {
     return (
       <LeftPanel>
@@ -76,7 +88,7 @@ export default class App extends Component {
   }
 
   render() {
-    const isAuthorized = false
+    const { isAuthorized } = this.props
 
     return (
       <div className={styles.app}>
