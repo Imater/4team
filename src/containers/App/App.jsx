@@ -2,6 +2,8 @@ import React, { Component, PropTypes as pt } from 'react'
 import pureRender from 'pure-render-decorator'
 import { connect } from 'react-redux'
 import { asyncConnect } from 'redux-async-connect'
+import Cookies from 'js-cookie'
+import { fetch } from 'redux/modules/userData'
 
 import Auth from 'containers/Auth'
 import Split from 'components/Split'
@@ -67,12 +69,28 @@ const tasks = [
     }
   }) => ({
     isAuthorized
-  })
+  }), {
+    fetchUserData: fetch
+  }
 )
 @pureRender
 export default class App extends Component {
   static propTypes = {
-    isAuthorized: pt.bool
+    isAuthorized: pt.bool,
+    fetchUserData: pt.func
+  }
+
+  static defaultProps = {
+    fetchUserData: () => {}
+  }
+
+  componentWillMount() {
+    const { fetchUserData } = this.props
+    const token = Cookies.get('token')
+
+    if (token) {
+      fetchUserData(token)
+    }
   }
 
   renderLeftPanel() {

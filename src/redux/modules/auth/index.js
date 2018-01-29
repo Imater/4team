@@ -1,6 +1,7 @@
 import { createAction, createReducer } from 'redux-act'
 import { loop, Effects } from 'redux-loop'
 import { fetch as fetchUserData } from 'redux/modules/userData'
+import Cookies from 'js-cookie'
 
 const initialState = {}
 
@@ -17,10 +18,18 @@ const handleSetToken = (state, payload) =>
     Effects.call(fetchUserData, payload.token)
   )
 
-const handleSetAuthSuccess = state => ({
-  ...state,
-  isAuthorized: true
-})
+const handleSetAuthSuccess = state => {
+  const { token } = state
+
+  if (token) {
+    Cookies.set('token', token, { expires: 7 })
+  }
+
+  return {
+    ...state,
+    isAuthorized: true
+  }
+}
 
 const handleSetAuthFailure = state => ({
   ...state,
