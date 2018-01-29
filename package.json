@@ -72,6 +72,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^21.2.1",
     "jest-cli": "^21.2.1",
+    "js-cookie": "^2.2.0",
     "kladrapi-for-node": "github:wormen/kladrapi-for-nodejs",
     "lodash.debounce": "^4.0.8",
     "memoizee": "^0.4.5",
