@@ -3,34 +3,16 @@ import pureRender from 'pure-render-decorator'
 import { connect } from 'react-redux'
 import { asyncConnect } from 'redux-async-connect'
 import Cookies from 'js-cookie'
-import { fetch } from 'redux/modules/userData'
+import { fetch as fetchUserData } from 'redux/modules/userData'
 
 import Auth from 'containers/Auth'
 import Split from 'components/Split'
 import Iframe from 'components/Iframe'
 import LeftPanel from 'components/LeftPanel'
-import UserPanel from 'components/UserPanel'
+import UserPanel from 'containers/UserPanel'
 import WorkDay from 'components/WorkDay'
 import Tasks from 'components/Tasks'
 import styles from './App.styl'
-
-const users = [
-  {
-    name: 'Все'
-  }, {
-    name: 'Женя'
-  }, {
-    name: 'Олег'
-  }, {
-    name: 'Арарат'
-  }, {
-    name: 'Рустам'
-  }, {
-    name: 'Денис'
-  }, {
-    name: 'Андрей'
-  }
-]
 
 const today = {
   name: 'Сегодня',
@@ -61,7 +43,13 @@ const tasks = [
   }
 ]
 
-@asyncConnect([{ promise: () => Promise.resolve() }])
+@asyncConnect([{
+  promise: ({ store }) => {
+    const token = Cookies.get('token')
+
+    store.dispatch(fetchUserData(token))
+  }
+}])
 @connect(
   ({
     auth: {
@@ -69,34 +57,18 @@ const tasks = [
     }
   }) => ({
     isAuthorized
-  }), {
-    fetchUserData: fetch
-  }
+  })
 )
 @pureRender
 export default class App extends Component {
   static propTypes = {
-    isAuthorized: pt.bool,
-    fetchUserData: pt.func
-  }
-
-  static defaultProps = {
-    fetchUserData: () => {}
-  }
-
-  componentWillMount() {
-    const { fetchUserData } = this.props
-    const token = Cookies.get('token')
-
-    if (token) {
-      fetchUserData(token)
-    }
+    isAuthorized: pt.bool
   }
 
   renderLeftPanel() {
     return (
       <LeftPanel>
-        <UserPanel users={users} />
+        <UserPanel />
 
         <WorkDay day={today}>
           <Tasks tasks={tasks} />
