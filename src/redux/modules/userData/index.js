@@ -3,6 +3,7 @@ import { loop, Effects } from 'redux-loop'
 import axios from 'axios'
 import R from 'ramda'
 import { setAuthSuccess, setAuthFailure } from 'redux/modules/auth'
+import { fetch as fetchUsers } from 'redux/modules/users'
 
 const initialState = {
   isLoading: false,
@@ -20,7 +21,7 @@ const request = payload =>
       password: 'api_token'
     }
   })
-    .then(fetchSuccess)
+    .then(data => fetchSuccess({ data, token: payload }))
     .catch(fetchFailure)
 
 const handleFetch = (state, payload) =>
@@ -33,18 +34,24 @@ const handleFetch = (state, payload) =>
     Effects.promise(request, payload)
   )
 
-const handleFetchSuccess = (state, payload) =>
-  loop(
+const handleFetchSuccess = (state, { data, token }) => {
+  const companyId = R.path(['data', 'data', 'default_wid'], data)
+
+  return loop(
     {
       ...state,
       isLoading: false,
       isLoaded: true,
-      companyId: R.path(['data', 'data', 'default_wid'], payload),
-      email: R.path(['data', 'data', 'email'], payload),
+      companyId,
+      email: R.path(['data', 'data', 'email'], data),
       error: ''
     },
-    Effects.call(setAuthSuccess)
+    Effects.batch([
+      Effects.call(setAuthSuccess),
+      Effects.call(fetchUsers, { id: companyId, token })
+    ])
   )
+}
 
 const handleFetchFailure = (state, payload) =>
   loop(
