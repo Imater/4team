@@ -5,6 +5,7 @@ import { reducer as form } from 'redux-form'
 import userAgent from './userAgent'
 import auth from './auth'
 import userData from './userData'
+import users from './users'
 
 const appReducers = combineReducers({
   form,
@@ -12,7 +13,8 @@ const appReducers = combineReducers({
   routing: routerReducer,
   userAgent,
   auth,
-  userData
+  userData,
+  users
 })
 
 export default appReducers
