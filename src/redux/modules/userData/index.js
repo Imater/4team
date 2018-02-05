@@ -34,24 +34,25 @@ const handleFetch = (state, payload) =>
     Effects.promise(request, payload)
   )
 
-const handleFetchSuccess = (state, { data, token }) => {
-  const companyId = R.path(['data', 'data', 'default_wid'], data)
-
-  return loop(
+const handleFetchSuccess = (state, { data, token }) =>
+  loop(
     {
       ...state,
       isLoading: false,
       isLoaded: true,
-      companyId,
+      userId: R.path(['data', 'data', 'id'], data),
+      companyId: R.path(['data', 'data', 'default_wid'], data),
       email: R.path(['data', 'data', 'email'], data),
       error: ''
     },
     Effects.batch([
       Effects.call(setAuthSuccess),
-      Effects.call(fetchUsers, { id: companyId, token })
+      Effects.call(fetchUsers, {
+        id: R.path(['data', 'data', 'default_wid'], data),
+        token
+      })
     ])
   )
-}
 
 const handleFetchFailure = (state, payload) =>
   loop(
