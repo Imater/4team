@@ -49,5 +49,26 @@ export default Object.assign({
         { property: 'og:image:height', content: '41' }
       ]
     }
-  }
+  },
+  users: [
+    {
+      name: 'Олег',
+      email: 'oleg.redko@csssr.com'
+    }, {
+      name: 'Женя',
+      email: 'eugene.vetsel@csssr.com'
+    }, {
+      name: 'Арарат',
+      email: 'ararat.martirossyan@csssr.com'
+    }, {
+      name: 'Рустам',
+      email: 'rustam.yusupov@csssr.com'
+    }, {
+      name: 'Денис',
+      email: 'denis.sein@csssr.com'
+    }, {
+      name: 'Андрей',
+      email: 'andrey.nalivaika@csssr.com'
+    }
+  ]
 }, environment)
