@@ -11,22 +11,23 @@ export default class UserPanel extends PureComponent {
     users: []
   }
 
-  renderUser({ name }, key) {
-    return (
-      <div
-        key={key}
-        className={styles.user}
-      >
-        <Button>
-          <div className={styles.wrapper}>
-            <Glyphicon glyph='user' />
+  handleClick = (id, email) => () =>
+    console.log(id, email)
 
-            {name}
-          </div>
-        </Button>
-      </div>
-    )
-  }
+  renderUser = ({ id, name, email }, key) => (
+    <div
+      key={key}
+      className={styles.user}
+    >
+      <Button onClick={this.handleClick(id, email)}>
+        <div className={styles.wrapper}>
+          <Glyphicon glyph='user' />
+
+          {name}
+        </div>
+      </Button>
+    </div>
+  )
 
   render() {
     const { users } = this.props
