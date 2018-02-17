@@ -6,6 +6,7 @@ import userAgent from './userAgent'
 import auth from './auth'
 import userData from './userData'
 import users from './users'
+import reports from './reports'
 
 const appReducers = combineReducers({
   form,
@@ -14,7 +15,8 @@ const appReducers = combineReducers({
   userAgent,
   auth,
   userData,
-  users
+  users,
+  reports
 })
 
 export default appReducers
