@@ -1,7 +1,7 @@
 import React, { Component, PropTypes as pt } from 'react'
 import pureRender from 'pure-render-decorator'
-import { connect } from 'react-redux'
 import { asyncConnect } from 'redux-async-connect'
+import { connect } from 'react-redux'
 import Cookies from 'js-cookie'
 import { fetch as fetchUserData } from 'redux/modules/userData'
 
@@ -12,6 +12,7 @@ import LeftPanel from 'components/LeftPanel'
 import UserPanel from 'containers/UserPanel'
 import WorkDay from 'components/WorkDay'
 import Tasks from 'components/Tasks'
+
 import styles from './App.styl'
 
 const today = {
