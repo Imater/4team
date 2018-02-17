@@ -18,16 +18,14 @@ const handleSetToken = (state, payload) =>
     Effects.call(fetchUserData, payload.token)
   )
 
-const handleSetAuthSuccess = state => {
-  const { token } = state
-
-  if (token) {
-    Cookies.set('token', token, { expires: 7 })
+const handleSetAuthSuccess = (state, payload) => {
+  if (payload) {
+    Cookies.set('token', payload, { expires: 7 })
   }
 
   return {
     ...state,
-    token,
+    token: payload,
     isAuthorized: true
   }
 }
