@@ -39,8 +39,9 @@ const handleFetchSuccess = (state, payload) => {
     [].concat(acc, item.email), [])
   const filteredData = R.filter(user =>
     R.contains(user.email, configUsers))(data)
-  const filteredUsers = R.map(R.pick(['id', 'name', 'email']))(filteredData)
-  const users = filteredUsers.map(user => ({
+  const filteredFields =
+    R.map(R.pick(['id', 'name', 'email', 'uid']))(filteredData)
+  const users = filteredFields.map(user => ({
     ...user,
     name: user.name.split(' ')[0]
   }))
