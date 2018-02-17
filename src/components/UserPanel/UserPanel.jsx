@@ -1,5 +1,7 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
-import { Button, Glyphicon } from 'react-bootstrap'
+import { Glyphicon } from 'react-bootstrap'
+import { Link } from 'react-router'
+
 import styles from './UserPanel.styl'
 
 export default class UserPanel extends PureComponent {
@@ -11,21 +13,18 @@ export default class UserPanel extends PureComponent {
     users: []
   }
 
-  handleClick = (id, email) => () =>
-    console.log(id, email)
-
-  renderUser = ({ id, name, email }, key) => (
+  renderUser = ({ id, name }, key) => (
     <div
       key={key}
       className={styles.user}
     >
-      <Button onClick={this.handleClick(id, email)}>
+      <Link to={`/user/${id}`}>
         <div className={styles.wrapper}>
           <Glyphicon glyph='user' />
 
           {name}
         </div>
-      </Button>
+      </Link>
     </div>
   )
 
