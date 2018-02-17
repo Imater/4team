@@ -46,7 +46,7 @@ const handleFetchSuccess = (state, { data, token }) =>
       error: ''
     },
     Effects.batch([
-      Effects.call(setAuthSuccess),
+      Effects.call(setAuthSuccess, token),
       Effects.call(fetchUsers, {
         id: R.path(['data', 'data', 'default_wid'], data),
         token
