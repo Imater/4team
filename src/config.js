@@ -52,8 +52,8 @@ export default Object.assign({
   },
   users: [
     {
-      name: 'Олег',
-      email: 'oleg.redko@csssr.com'
+      name: 'Дмитрий',
+      email: 'dmitry.zhdan@csssr.com'
     }, {
       name: 'Женя',
       email: 'eugene.vetsel@csssr.com'
