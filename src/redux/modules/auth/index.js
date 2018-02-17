@@ -27,6 +27,7 @@ const handleSetAuthSuccess = state => {
 
   return {
     ...state,
+    token,
     isAuthorized: true
   }
 }
