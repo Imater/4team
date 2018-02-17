@@ -1,0 +1,34 @@
+import R from 'ramda'
+import { asyncConnect } from 'redux-async-connect'
+import { connect } from 'react-redux'
+import { createSelector } from 'reselect'
+import { fetch as fetchReports } from 'redux/modules/reports'
+import User from 'components/User'
+
+const getUserById = createSelector(
+  R.pathOr('', ['users', 'users']),
+  (state, id) => id,
+  (users, id) => R.find(R.propEq('id', Number(id)), users)
+)
+
+export default R.compose(
+  asyncConnect([{
+    promise: ({ store, params: { id } }) => {
+      const user = getUserById(store.getState(), id)
+
+      store.dispatch(fetchReports({
+        companyId: R.pathOr('', ['userData', 'companyId'], store.getState()),
+        email: R.prop('email', user),
+        uid: R.prop('uid', user),
+        token: R.pathOr('', ['auth', 'token'], store.getState())
+      }))
+    }
+  }]),
+  connect(
+    ({
+      users
+    }) => ({
+      users: R.path(['users'], users)
+    })
+  )
+)(User)
