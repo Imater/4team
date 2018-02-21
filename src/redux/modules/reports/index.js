@@ -41,13 +41,25 @@ const handleFetch = (state, payload) =>
   )
 
 const handleFetchSuccess = (state, payload) => {
-  const data = R.path(['data'], payload)
+  const data = R.path(['data', 'data'], payload)
+  const filteredData = R.map(R.pick(['description', 'dur', 'end']))(data)
+  const modifiedData = R.map(task => ({
+    ...task,
+    end: task.end.split('T')[0]
+  }))(filteredData)
+  // const tasks = R.reduce((acc, cur) => {
+  //   const isSaved = R.contains({ description: cur.description }, acc)
+  //
+  //   if (isSaved) {
+  //     acc[cur]
+  //   }
+  // }, [])(modifiedData)
 
   return {
     ...state,
     isLoading: false,
     isLoaded: true,
-    data
+    tasks: modifiedData
   }
 }
 
