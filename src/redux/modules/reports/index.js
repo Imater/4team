@@ -12,24 +12,32 @@ export const fetch = createAction('reports/FETCH')
 const fetchSuccess = createAction('reports/FETCH_SUCCESS')
 const fetchFailure = createAction('reports/FETCH_FAILURE')
 
-const request = ({ companyId, email, uid, token }) =>
-  axios.get(`https://toggl.com/reports/api/v2/details?workspace_id=${companyId}&user_agent=${email}&user_ids=${uid}`, {
+const request = ({ companyId, email, uid, since, until, token }) =>
+  axios.get('https://toggl.com/reports/api/v2/details', {
     auth: {
       username: token,
       password: 'api_token'
+    },
+    params: {
+      workspace_id: companyId,
+      user_agent: email,
+      user_ids: uid,
+      order_field: 'date',
+      since,
+      until
     }
   })
     .then(fetchSuccess)
     .catch(fetchFailure)
 
-const handleFetch = (state, { companyId, email, uid, token }) =>
+const handleFetch = (state, payload) =>
   loop(
     {
       ...state,
       isLoading: true,
       isLoaded: false
     },
-    Effects.promise(request, { companyId, email, uid, token })
+    Effects.promise(request, payload)
   )
 
 const handleFetchSuccess = (state, payload) => {
