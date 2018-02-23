@@ -42,24 +42,29 @@ const handleFetch = (state, payload) =>
 
 const handleFetchSuccess = (state, payload) => {
   const data = R.path(['data', 'data'], payload)
-  const filteredData = R.map(R.pick(['description', 'dur', 'end']))(data)
-  const modifiedData = R.map(task => ({
-    ...task,
-    end: task.end.split('T')[0]
-  }))(filteredData)
-  // const tasks = R.reduce((acc, cur) => {
-  //   const isSaved = R.contains({ description: cur.description }, acc)
-  //
-  //   if (isSaved) {
-  //     acc[cur]
-  //   }
-  // }, [])(modifiedData)
+  const days = R.compose(
+    // отсортировать по дате, от большей к меньшей
+    // преобразовать даты объктов в даты массивов
+    R.map(day => R.reduce((acc, cur) => ({
+      ...acc,
+      [cur.id]: {
+        ...R.pick(['description', 'dur', 'end', 'id'], cur),
+        dur: cur.dur + R.pathOr(0, [cur.id, 'dur'], acc)
+      }
+    }), {}, day)),
+    R.groupBy(R.prop('date')),
+    R.map(task => ({
+      id: task.description.split(' ')[0], // заменить регуляркой, т.к. бывает Talk/
+      date: task.end.split('T')[0],
+      ...R.pick(['description', 'dur', 'end'], task)
+    }))
+  )(data)
 
   return {
     ...state,
     isLoading: false,
     isLoaded: true,
-    tasks: modifiedData
+    days
   }
 }
 
