@@ -1,6 +1,7 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
 import { Glyphicon } from 'react-bootstrap'
 import { Link } from 'react-router'
+import Text from 'components/Text'
 
 import styles from './UserPanel.styl'
 
@@ -22,7 +23,9 @@ export default class UserPanel extends PureComponent {
         <div className={styles.wrapper}>
           <Glyphicon glyph='user' />
 
-          {name}
+          <Text size={16}>
+            {name}
+          </Text>
         </div>
       </Link>
     </div>
