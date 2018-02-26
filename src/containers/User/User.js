@@ -32,9 +32,9 @@ export default R.compose(
   }]),
   connect(
     ({
-      users
+      reports
     }) => ({
-      users: R.path(['users'], users)
+      days: R.path(['days'], reports)
     })
   )
 )(User)

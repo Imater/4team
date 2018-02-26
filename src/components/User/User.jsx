@@ -1,22 +1,41 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
+import WorkDay from 'components/WorkDay'
+import Tasks from 'components/Tasks'
 
 import styles from './User.styl'
 
 export default class User extends PureComponent {
   static propTypes = {
-    users: pt.array
+    days: pt.object
   }
 
   static defaultProps = {
-    users: []
+    days: {}
+  }
+
+  renderDay(day, tasks) {
+    return (
+      <div
+        key={day}
+        className={styles.day}
+      >
+        {this.renderHeader(day)}
+
+        <Tasks tasks={tasks} />
+      </div>
+    )
   }
 
   render() {
-    const { users } = this.props
+    const { days } = this.props
 
     return (
       <aside className={styles.user}>
-        {users.map(this.renderUser)}
+        {Object.keys(days).map(day => (
+          <WorkDay caption={day}>
+            <Tasks tasks={days[day]} />
+          </WorkDay>
+        ))}
       </aside>
     )
   }
