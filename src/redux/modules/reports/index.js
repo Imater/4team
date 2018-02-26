@@ -2,6 +2,7 @@ import { createAction, createReducer } from 'redux-act'
 import { loop, Effects } from 'redux-loop'
 import axios from 'axios'
 import R from 'ramda'
+import config from 'config'
 
 const initialState = {
   isLoading: false,
@@ -54,7 +55,7 @@ const handleFetchSuccess = (state, payload) => {
     }), {}, day)),
     R.groupBy(R.prop('date')),
     R.map(task => ({
-      id: task.description.split(' ')[0], // заменить регуляркой, т.к. бывает Talk/
+      id: R.match(config.taskTemplate, task.description)[0],
       date: task.end.split('T')[0],
       ...R.pick(['description', 'dur', 'end'], task)
     }))

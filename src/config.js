@@ -50,6 +50,7 @@ export default Object.assign({
       ]
     }
   },
+  taskTemplate: /(CSSSR-\d*)/gi,
   users: [
     {
       name: 'Дмитрий',
