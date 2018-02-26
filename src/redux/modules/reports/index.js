@@ -44,8 +44,9 @@ const handleFetch = (state, payload) =>
 const handleFetchSuccess = (state, payload) => {
   const data = R.path(['data', 'data'], payload)
   const days = R.compose(
-    // отсортировать по дате, от большей к меньшей
-    // преобразовать даты объктов в даты массивов
+    R.map(day => R.reverse(day)),
+    R.map(R.sortBy(R.prop('end'))),
+    R.map(day => R.values(day)),
     R.map(day => R.reduce((acc, cur) => ({
       ...acc,
       [cur.id]: {
