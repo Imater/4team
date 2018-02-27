@@ -2,6 +2,7 @@ import { createAction, createReducer } from 'redux-act'
 import { loop, Effects } from 'redux-loop'
 import axios from 'axios'
 import R from 'ramda'
+import moment from 'moment'
 import config from 'config'
 
 const initialState = {
@@ -43,9 +44,20 @@ const handleFetch = (state, payload) =>
 
 const handleFetchSuccess = (state, payload) => {
   const data = R.path(['data', 'data'], payload)
+
+  const leftPad = str => `00${str}`.slice(-'00'.length)
+
   const days = R.compose(
     R.map(day => R.reverse(day)),
     R.map(R.sortBy(R.prop('end'))),
+    R.map(day => R.map(task => {
+      const time = moment.duration(task.dur)
+
+      return {
+        ...task,
+        dur: `${leftPad(time.hours())}:${leftPad(time.minutes())}:${leftPad(time.seconds())}`
+      }
+    }, day)),
     R.map(day => R.values(day)),
     R.map(day => R.reduce((acc, cur) => ({
       ...acc,
