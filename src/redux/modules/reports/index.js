@@ -61,9 +61,9 @@ const handleFetchSuccess = (state, payload) => {
     R.map(day => R.values(day)),
     R.map(day => R.reduce((acc, cur) => ({
       ...acc,
-      [cur.id]: {
+      [cur.description]: {
         ...R.pick(['description', 'dur', 'end', 'id'], cur),
-        dur: cur.dur + R.pathOr(0, [cur.id, 'dur'], acc)
+        dur: cur.dur + R.pathOr(0, [cur.description, 'dur'], acc)
       }
     }), {}, day)),
     R.groupBy(R.prop('date')),
