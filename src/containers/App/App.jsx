@@ -12,6 +12,7 @@ import Iframe from 'components/Iframe'
 import LeftPanel from 'components/LeftPanel'
 import UserPanel from 'containers/UserPanel'
 import User from 'containers/User'
+import Text from 'components/Text'
 
 import styles from './App.styl'
 
@@ -52,9 +53,17 @@ export default class App extends Component {
     )
   }
 
+  renderRightPanel = () => {
+    const { activeTask } = this.props
+    const component = activeTask ?
+      <Iframe url={`${config.task.prefix}${activeTask}`} /> :
+      <Text size={16}>Задача не выбрана</Text>
+
+    return component
+  }
+
   render() {
-    const { isAuthorized, activeTask } = this.props
-    const taskUrl = activeTask ? `${config.task.prefix}${activeTask}` : ''
+    const { isAuthorized } = this.props
 
     return (
       <div className={styles.app}>
@@ -66,7 +75,7 @@ export default class App extends Component {
         {isAuthorized &&
           <Split
             left={this.renderLeftPanel()}
-            right={<Iframe url={taskUrl} />}
+            right={this.renderRightPanel()}
           />}
       </div>
     )
