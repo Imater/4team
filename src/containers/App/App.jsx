@@ -43,6 +43,12 @@ export default class App extends Component {
     activeTask: pt.string
   }
 
+  componentDidMount() {
+    if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+      window.location.replace('/')
+    }
+  }
+
   renderLeftPanel() {
     return (
       <LeftPanel>
