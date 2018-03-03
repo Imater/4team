@@ -1,6 +1,8 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
+import R from 'ramda'
 import WorkDay from 'components/WorkDay'
 import Tasks from 'containers/Tasks'
+import Text from 'components/Text'
 
 import styles from './User.styl'
 
@@ -30,6 +32,14 @@ export default class User extends PureComponent {
 
   render() {
     const { days } = this.props
+
+    if (R.isEmpty(days)) {
+      return (
+        <Text size={16}>
+          Задач нет
+        </Text>
+      )
+    }
 
     return (
       <aside className={styles.user}>
