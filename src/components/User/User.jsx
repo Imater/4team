@@ -33,18 +33,14 @@ export default class User extends PureComponent {
   render() {
     const { days } = this.props
 
-    if (R.isEmpty(days)) {
-      return (
-        <Text size={16}>
-          Задач нет
-        </Text>
-      )
-    }
-
     return (
-      <aside className={styles.user}>
-        {Object.keys(days).map(this.renderDay)}
-      </aside>
+      <div className={styles.user}>
+        {R.isEmpty(days) ?
+          <Text size={16}>
+            Задач нет
+          </Text> :
+          Object.keys(days).map(this.renderDay)}
+      </div>
     )
   }
 }

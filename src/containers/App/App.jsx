@@ -63,7 +63,13 @@ export default class App extends Component {
     const { activeTask } = this.props
     const component = activeTask ?
       <Iframe url={`${config.task.prefix}${activeTask}`} /> :
-      <Text size={16}>Задача не выбрана</Text>
+      (
+        <div className={styles.taskBlank}>
+          <Text size={16}>
+            Задача не выбрана
+          </Text>
+        </div>
+      )
 
     return component
   }
