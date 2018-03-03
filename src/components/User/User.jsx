@@ -13,16 +13,27 @@ export default class User extends PureComponent {
     days: {}
   }
 
+  renderDay = (day, index) => {
+    const { days } = this.props
+
+    return (
+      <div
+        key={index}
+        className={styles.day}
+      >
+        <WorkDay caption={day}>
+          <Tasks tasks={days[day]} />
+        </WorkDay>
+      </div>
+    )
+  }
+
   render() {
     const { days } = this.props
 
     return (
       <aside className={styles.user}>
-        {Object.keys(days).map(day => (
-          <WorkDay caption={day}>
-            <Tasks tasks={days[day]} />
-          </WorkDay>
-        ))}
+        {Object.keys(days).map(this.renderDay)}
       </aside>
     )
   }
