@@ -4,6 +4,7 @@ import { asyncConnect } from 'redux-async-connect'
 import { connect } from 'react-redux'
 import Cookies from 'js-cookie'
 import { fetch as fetchUserData } from 'redux/modules/userData'
+import config from 'config'
 
 import Auth from 'containers/Auth'
 import Split from 'components/Split'
@@ -25,15 +26,20 @@ import styles from './App.styl'
   ({
     auth: {
       isAuthorized
+    },
+    tasks: {
+      activeTask
     }
   }) => ({
-    isAuthorized
+    isAuthorized,
+    activeTask
   })
 )
 @pureRender
 export default class App extends Component {
   static propTypes = {
-    isAuthorized: pt.bool
+    isAuthorized: pt.bool,
+    activeTask: pt.string
   }
 
   renderLeftPanel() {
@@ -47,7 +53,8 @@ export default class App extends Component {
   }
 
   render() {
-    const { isAuthorized } = this.props
+    const { isAuthorized, activeTask } = this.props
+    const taskUrl = activeTask ? `${config.task.prefix}${activeTask}` : ''
 
     return (
       <div className={styles.app}>
@@ -59,7 +66,7 @@ export default class App extends Component {
         {isAuthorized &&
           <Split
             left={this.renderLeftPanel()}
-            right={<Iframe url='http://jira.relef.ru/browse/CSSSR-718' />}
+            right={<Iframe url={taskUrl} />}
           />}
       </div>
     )

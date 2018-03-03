@@ -68,7 +68,7 @@ const handleFetchSuccess = (state, payload) => {
     }), {}, day)),
     R.groupBy(R.prop('date')),
     R.map(task => ({
-      id: R.match(config.taskTemplate, task.description)[0],
+      id: R.match(config.task.template, task.description)[0],
       date: task.end.split('T')[0],
       ...R.pick(['description', 'dur', 'end'], task)
     }))
