@@ -7,16 +7,17 @@ import styles from './Tasks.styl'
 
 export default class Tasks extends PureComponent {
   static propTypes = {
-    tasks: pt.array
+    tasks: pt.array,
+    setActiveTask: pt.func
   }
 
   static defaultProps = {
-    tasks: []
+    tasks: [],
+    setActiveTask: () => {}
   }
 
-  handleClick = url => () => {
-    console.log(url) // TODO: метод из хранилища
-  }
+  handleClick = url => () =>
+    this.props.setActiveTask(url)
 
   renderTask = ({ id, description, dur }, key) => (
     <div
