@@ -79,12 +79,10 @@ export default class App extends Component {
 
     return (
       <div className={styles.app}>
-        {!isAuthorized &&
+        {!isAuthorized ?
           <div className={styles.auth}>
             <Auth />
-          </div>}
-
-        {isAuthorized &&
+          </div> :
           <Split
             left={this.renderLeftPanel()}
             right={this.renderRightPanel()}
