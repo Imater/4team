@@ -43,7 +43,7 @@ export default class WorkDay extends PureComponent {
 
           <form onSubmit={handleSubmit}>
             <Field
-              name={`comment-${caption}`}
+              name={caption}
               rows={4}
               placeholder='Введите заметку'
               component={this.renderField}
