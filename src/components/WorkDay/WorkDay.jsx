@@ -6,30 +6,31 @@ import styles from './WorkDay.styl'
 
 export default class WorkDay extends PureComponent {
   static propTypes = {
+    user: pt.string,
     caption: pt.string,
     children: pt.node,
-    handleSubmit: pt.func
+    onBlur: pt.func
   }
 
   static defaultProps = {
-    handleSubmit: () => {}
+    onBlur: () => {}
   }
 
-  renderField = ({ input: { value, onChange }, ...rest }) => (
+  renderField = ({ input: { value, onChange } }) => (
     <FormControl
       componentClass='textarea'
+      rows={4}
+      placeholder='Введите заметку'
       value={value}
       onChange={onChange}
-      onBlur={this.props.handleSubmit}
-      {...rest}
+      onBlur={this.props.onBlur}
     />
   )
 
   render() {
     const {
       caption,
-      children,
-      handleSubmit
+      children
     } = this.props
 
     return (
@@ -41,14 +42,10 @@ export default class WorkDay extends PureComponent {
             </Title>
           </div>
 
-          <form onSubmit={handleSubmit}>
-            <Field
-              name={caption}
-              rows={4}
-              placeholder='Введите заметку'
-              component={this.renderField}
-            />
-          </form>
+          <Field
+            name={caption}
+            component={this.renderField}
+          />
         </div>
 
         {children}

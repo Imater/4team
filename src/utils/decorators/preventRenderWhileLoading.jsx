@@ -1,26 +1,28 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes as pt } from 'react'
 import { connect } from 'react-redux'
 import hoistStatics from 'hoist-non-react-statics'
 
 export default () => WrappedComponent => {
   @connect(
     ({
-      reduxAsyncConnect: { loaded: reduxAsyncConnectLoaded },
-      updateData: { loaded: updateDataLoaded }
+      reduxAsyncConnect: { loaded: reduxAsyncConnectLoaded }
     }) => ({
-      reduxAsyncConnectLoaded,
-      updateDataLoaded
+      reduxAsyncConnectLoaded
     })
   )
   class PreventRenderWhileLoading extends React.Component {
-    static displayName = `PreventRenderWhileLoading(${WrappedComponent.displayName || WrappedComponent.name})`;
+    static displayName =
+      `PreventRenderWhileLoading(${
+        WrappedComponent.displayName ||
+        WrappedComponent.name
+      })`
 
     static propTypes = {
-      loaded: PropTypes.bool
+      loaded: pt.bool
     }
 
-    shouldComponentUpdate({ reduxAsyncConnectLoaded, updateDataLoaded }) {
-      return reduxAsyncConnectLoaded && updateDataLoaded
+    shouldComponentUpdate({ reduxAsyncConnectLoaded }) {
+      return reduxAsyncConnectLoaded
     }
 
     render() {

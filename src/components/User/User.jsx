@@ -8,22 +8,29 @@ import styles from './User.styl'
 
 export default class User extends PureComponent {
   static propTypes = {
-    days: pt.object
+    days: pt.object,
+    user: pt.number,
+    handleSubmit: pt.func
   }
 
   static defaultProps = {
-    days: {}
+    days: {},
+    handleSubmit: () => {}
   }
 
   renderDay = (day, index) => {
-    const { days } = this.props
+    const { days, handleSubmit } = this.props
 
     return (
       <div
         key={index}
         className={styles.day}
       >
-        <WorkDay caption={day}>
+        <WorkDay
+          key={index}
+          caption={day}
+          onBlur={handleSubmit}
+        >
           <Tasks tasks={days[day]} />
         </WorkDay>
       </div>
@@ -34,13 +41,13 @@ export default class User extends PureComponent {
     const { days } = this.props
 
     return (
-      <div className={styles.user}>
+      <form className={styles.user}>
         {R.isEmpty(days) ?
           <Text size={16}>
             Задач нет
           </Text> :
           Object.keys(days).map(this.renderDay)}
-      </div>
+      </form>
     )
   }
 }

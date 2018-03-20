@@ -2,8 +2,10 @@ import R from 'ramda'
 import { asyncConnect } from 'redux-async-connect'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
+import { reduxForm } from 'redux-form'
 import moment from 'moment'
 import { fetch as fetchReports } from 'redux/modules/reports'
+import { loadComments, saveComments } from 'redux/modules/comments'
 import User from 'components/User'
 
 const getUserById = createSelector(
@@ -25,13 +27,24 @@ export default R.compose(
         until: moment(new Date()).format('YYYY-MM-DD'),
         token: R.pathOr('', ['auth', 'token'], store.getState())
       }))
+
+      store.dispatch(loadComments(id))
     }
   }]),
   connect(
     ({
-      reports
+      reports,
+      comments: { user, days }
     }) => ({
-      days: R.path(['days'], reports)
-    })
-  )
+      days: R.prop('days', reports),
+      user,
+      initialValues: R.prop(user, days)
+    }), {
+      onSubmit: saveComments
+    }
+  ),
+  reduxForm({
+    form: 'comments',
+    enableReinitialize: true
+  })
 )(User)
