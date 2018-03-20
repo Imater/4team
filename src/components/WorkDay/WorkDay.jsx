@@ -6,7 +6,6 @@ import styles from './WorkDay.styl'
 
 export default class WorkDay extends PureComponent {
   static propTypes = {
-    user: pt.string,
     caption: pt.string,
     children: pt.node,
     onBlur: pt.func

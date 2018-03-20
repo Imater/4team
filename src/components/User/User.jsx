@@ -1,6 +1,6 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
 import R from 'ramda'
-import WorkDay from 'containers/WorkDay'
+import WorkDay from 'components/WorkDay'
 import Tasks from 'containers/Tasks'
 import Text from 'components/Text'
 
