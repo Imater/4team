@@ -23,7 +23,7 @@ export default R.compose(
         companyId: R.pathOr('', ['userData', 'companyId'], store.getState()),
         email: R.prop('email', user),
         uid: R.prop('uid', user),
-        since: moment(new Date()).subtract(10, 'days').format('YYYY-MM-DD'),
+        since: moment(new Date()).subtract(14, 'days').format('YYYY-MM-DD'),
         until: moment(new Date()).format('YYYY-MM-DD'),
         token: R.pathOr('', ['auth', 'token'], store.getState())
       }))

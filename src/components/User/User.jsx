@@ -9,7 +9,7 @@ import styles from './User.styl'
 export default class User extends PureComponent {
   static propTypes = {
     days: pt.object,
-    user: pt.number,
+    user: pt.string,
     handleSubmit: pt.func
   }
 
