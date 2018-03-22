@@ -82,7 +82,9 @@ app.use((req, res, next) => {
     'http://localhost:3000',
     'http://127.0.0.1:3031',
     'http://localhost:3031',
-    'http://4team.csssr.ru']
+    'http://4team.csssr.ru',
+    'http://tracker.4team.csssr.ru/'
+  ]
   const origin = req.headers.origin
   if (allowedOrigins.indexOf(origin) > -1) {
     res.setHeader('Access-Control-Allow-Origin', origin)
