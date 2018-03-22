@@ -53,7 +53,11 @@ export default Object.assign({
   },
   task: {
     template: /(CSSSR-\d*)|(RO-\d*)|(CHOC-\d*)/gi,
-    prefix: 'http://jira.relef.ru/browse/'
+    prefix: {
+      CSSSR: 'http://jira.relef.ru/browse/',
+      RO: 'http://jira.relef.ru/browse/',
+      CHOC: 'http://jira.staffconfig.ru/browse/'
+    }
   },
   users: [
     {

@@ -3,6 +3,7 @@ import pureRender from 'pure-render-decorator'
 import { asyncConnect } from 'redux-async-connect'
 import { connect } from 'react-redux'
 import Cookies from 'js-cookie'
+import R from 'ramda'
 import { fetch as fetchUserData } from 'redux/modules/userData'
 import config from 'config'
 
@@ -61,9 +62,10 @@ export default class App extends Component {
 
   renderRightPanel = () => {
     const { activeTask } = this.props
+    const project = activeTask && activeTask.split('-')[0]
+    const prefix = config.task.prefix[project]
     const component = activeTask ?
-      <Iframe url={`${config.task.prefix}${activeTask}`} /> :
-      (
+      <Iframe url={`${prefix}${activeTask}`} /> : (
         <div className={styles.taskBlank}>
           <Text size={16}>
             Задача не выбрана
