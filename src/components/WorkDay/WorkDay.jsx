@@ -2,11 +2,13 @@ import React, { PureComponent, PropTypes as pt } from 'react'
 import { Field } from 'redux-form'
 import TextareaAutosize from 'react-autosize-textarea'
 import Title from 'components/Title'
+import Text from 'components/Text'
 import styles from './WorkDay.styl'
 
 export default class WorkDay extends PureComponent {
   static propTypes = {
     caption: pt.string,
+    time: pt.string,
     children: pt.node,
     onBlur: pt.func
   }
@@ -28,6 +30,7 @@ export default class WorkDay extends PureComponent {
   render() {
     const {
       caption,
+      time,
       children
     } = this.props
 
@@ -38,6 +41,10 @@ export default class WorkDay extends PureComponent {
             <Title level={2}>
               {caption}
             </Title>
+
+            <Text size={18}>
+              {time}
+            </Text>
           </div>
 
           <Field

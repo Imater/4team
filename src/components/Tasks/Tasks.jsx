@@ -19,7 +19,7 @@ export default class Tasks extends PureComponent {
   handleClick = url => () =>
     this.props.setActiveTask(url)
 
-  renderTask = ({ id, description, dur }, key) => (
+  renderTask = ({ id, description, time }, key) => (
     <div
       key={key}
       className={styles.task}
@@ -37,7 +37,7 @@ export default class Tasks extends PureComponent {
 
       <div className={styles.time}>
         <Text size={16}>
-          {dur}
+          {time}
         </Text>
       </div>
     </div>

@@ -20,6 +20,8 @@ export default class User extends PureComponent {
 
   renderDay = (day, index) => {
     const { days, handleSubmit } = this.props
+    const tasks = R.pathOr([], [day, 'tasks'], days)
+    const time = R.pathOr('', [day, 'totalTime'], days)
 
     return (
       <div
@@ -29,9 +31,10 @@ export default class User extends PureComponent {
         <WorkDay
           key={index}
           caption={day}
+          time={time}
           onBlur={handleSubmit}
         >
-          <Tasks tasks={days[day]} />
+          <Tasks tasks={tasks} />
         </WorkDay>
       </div>
     )
