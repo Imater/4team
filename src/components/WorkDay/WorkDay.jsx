@@ -1,6 +1,6 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
 import { Field } from 'redux-form'
-import { FormControl } from 'react-bootstrap'
+import TextareaAutosize from 'react-autosize-textarea'
 import Title from 'components/Title'
 import styles from './WorkDay.styl'
 
@@ -16,9 +16,8 @@ export default class WorkDay extends PureComponent {
   }
 
   renderField = ({ input: { value, onChange } }) => (
-    <FormControl
-      componentClass='textarea'
-      rows={4}
+    <TextareaAutosize
+      className={styles.textarea}
       placeholder='Введите заметку'
       value={value}
       onChange={onChange}
