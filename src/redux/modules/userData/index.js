@@ -15,7 +15,7 @@ const fetchSuccess = createAction('userData/FETCH_SUCCESS')
 const fetchFailure = createAction('userData/FETCH_FAILURE')
 
 const request = payload =>
-  axios.get('https://www.toggl.com/api/v8/me', {
+  axios.get('/api/v8/me', {
     auth: {
       username: payload,
       password: 'api_token'

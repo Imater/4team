@@ -15,7 +15,7 @@ const fetchSuccess = createAction('reports/FETCH_SUCCESS')
 const fetchFailure = createAction('reports/FETCH_FAILURE')
 
 const request = ({ companyId, email, uid, since, until, token }) =>
-  axios.get('https://toggl.com/reports/api/v2/details', {
+  axios.get('/reports/api/v2/details', {
     auth: {
       username: token,
       password: 'api_token'

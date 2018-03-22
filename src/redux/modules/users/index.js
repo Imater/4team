@@ -14,7 +14,7 @@ const fetchSuccess = createAction('users/FETCH_SUCCESS')
 const fetchFailure = createAction('users/FETCH_FAILURE')
 
 const request = ({ id, token }) =>
-  axios.get(`https://www.toggl.com/api/v8/workspaces/${id}/workspace_users`, {
+  axios.get(`/api/v8/workspaces/${id}/workspace_users`, {
     auth: {
       username: token,
       password: 'api_token'
