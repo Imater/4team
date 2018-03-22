@@ -17,6 +17,7 @@ export default Object.assign({
   apiServer: process.env.APISERVER || 'http://s.api.4team.ru:80',
   authServer: process.env.AUTHSERVER || 'http://s.connect.4team.ru/',
   kladrToken: process.env.KLADR_TOKEN || '57d649510a69de06468b45cb',
+  togglServer: process.env.APISERVER || 'https://www.toggl.com',
   metrika: {
     status: true,
     ga: 'UA-79219887-1',

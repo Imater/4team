@@ -58,6 +58,30 @@ const proxyUpload = httpProxy.createProxyServer({
   changeOrigin: true
 })
 
+const apiTogglUrl = `${config.togglServer}`
+const targetTogglUrl = `${apiTogglUrl}/api/v8`
+const proxyToggl = httpProxy.createProxyServer({
+  target: targetTogglUrl,
+  xfwd: false,
+  changeOrigin: true
+})
+
+app.use('/api/v8', (req, res) => {
+  proxyToggl.web(req, res, { target: targetTogglUrl })
+})
+
+const targetToggReportslUrl = `${apiTogglUrl}/reports/api/v2`
+const proxyTogglReports = httpProxy.createProxyServer({
+  target: targetToggReportslUrl,
+  xfwd: false,
+  changeOrigin: true,
+  secure: false
+})
+
+app.use('/reports/api/v2', (req, res) => {
+  proxyTogglReports.web(req, res, { target: targetToggReportslUrl })
+})
+
 // Proxy to API server
 app.use('/v1', (req, res) => {
   proxyApi.web(req, res, { target: targetUrlApi })
