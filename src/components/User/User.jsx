@@ -1,4 +1,5 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
+import { Link } from 'react-router'
 import R from 'ramda'
 import WorkDay from 'components/WorkDay'
 import Tasks from 'containers/Tasks'
@@ -8,30 +9,28 @@ import styles from './User.styl'
 
 export default class User extends PureComponent {
   static propTypes = {
-    days: pt.object,
+    days: pt.array,
     user: pt.string,
+    page: pt.number,
     handleSubmit: pt.func
   }
 
   static defaultProps = {
-    days: {},
+    days: [],
     handleSubmit: () => {}
   }
 
-  renderDay = (day, index) => {
-    const { days, handleSubmit } = this.props
-    const tasks = R.pathOr([], [day, 'tasks'], days)
-    const time = R.pathOr('', [day, 'totalTime'], days)
+  renderDay = ({ date, tasks, totalTime }) => {
+    const { handleSubmit } = this.props
 
     return (
       <div
-        key={index}
+        key={date}
         className={styles.day}
       >
         <WorkDay
-          key={index}
-          caption={day}
-          time={time}
+          caption={date}
+          time={totalTime}
           onBlur={handleSubmit}
         >
           <Tasks tasks={tasks} />
@@ -41,7 +40,12 @@ export default class User extends PureComponent {
   }
 
   render() {
-    const { days } = this.props
+    const {
+      days,
+      user,
+      page
+    } = this.props
+    const nextPage = page + 1
 
     return (
       <form className={styles.user}>
@@ -49,7 +53,18 @@ export default class User extends PureComponent {
           <Text size={16}>
             Задач нет
           </Text> :
-          Object.keys(days).map(this.renderDay)}
+          <div className={styles.days}>
+            {days.map(this.renderDay)}
+
+            <Link
+              className={styles.link}
+              to={`/user/${user}?page=${nextPage}`}
+            >
+              <Text size={16}>
+                Еще...
+              </Text>
+            </Link>
+          </div>}
       </form>
     )
   }

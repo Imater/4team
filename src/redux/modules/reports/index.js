@@ -2,12 +2,7 @@ import { createAction, createReducer } from 'redux-act'
 import { loop, Effects } from 'redux-loop'
 import axios from 'axios'
 import R from 'ramda'
-import moment from 'moment'
-import config from 'config'
-
-const leftPad = str => `00${str}`.slice(-'00'.length)
-const formatTime = dur =>
-  `${leftPad(dur.hours())}:${leftPad(dur.minutes())}:${leftPad(dur.seconds())}`
+import { getDays } from './selector'
 
 const initialState = {
   isLoading: false,
@@ -18,7 +13,7 @@ export const fetch = createAction('reports/FETCH')
 const fetchSuccess = createAction('reports/FETCH_SUCCESS')
 const fetchFailure = createAction('reports/FETCH_FAILURE')
 
-const request = ({ companyId, email, uid, since, until, token }) =>
+const request = ({ companyId, email, uid, since, until, token, page }) =>
   axios.get('/reports/api/v2/details', {
     auth: {
       username: token,
@@ -30,10 +25,11 @@ const request = ({ companyId, email, uid, since, until, token }) =>
       user_ids: uid,
       order_field: 'date',
       since,
-      until
+      until,
+      page
     }
   })
-    .then(fetchSuccess)
+    .then(response => fetchSuccess({ response, page }))
     .catch(fetchFailure)
 
 const handleFetch = (state, payload) =>
@@ -46,44 +42,19 @@ const handleFetch = (state, payload) =>
     Effects.promise(request, payload)
   )
 
-const handleFetchSuccess = (state, payload) => {
-  const data = R.path(['data', 'data'], payload)
-  const days = R.compose(
-    R.map(day => R.reverse(day)),
-    R.map(R.sortBy(R.prop('end'))),
-    R.map(day => R.map(task => ({
-      ...task,
-      time: task.dur ? formatTime(moment.duration(task.dur)) : ''
-    }), day)),
-    R.map(day => R.values(day)),
-    R.map(day => R.reduce((acc, cur) => ({
-      ...acc,
-      [cur.description]: {
-        ...R.pick(['description', 'dur', 'end', 'id'], cur),
-        dur: cur.dur + R.pathOr(0, [cur.description, 'dur'], acc)
-      }
-    }), {}, day)),
-    R.groupBy(R.prop('date')),
-    R.map(task => ({
-      id: R.match(config.task.template, task.description)[0],
-      date: task.end.split('T')[0],
-      ...R.pick(['description', 'dur', 'end'], task)
-    }))
-  )(data)
-  const daysWithTotal = R.map(day => {
-    const totalTime = day.reduce((acc, task) => acc + task.dur, 0)
-
-    return {
-      tasks: day,
-      totalTime: totalTime ? formatTime(moment.duration(totalTime)) : ''
-    }
-  })(days)
+const handleFetchSuccess = (state, { response, page }) => {
+  const data = R.path(['data', 'data'], response)
+  const oldData = page === 1 || state.data === undefined ? [] : state.data
+  const newData = data.concat(oldData)
+  const days = getDays(newData)
 
   return {
     ...state,
     isLoading: false,
     isLoaded: true,
-    days: daysWithTotal
+    data: newData,
+    days,
+    page
   }
 }
 

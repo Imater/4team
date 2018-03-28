@@ -16,16 +16,18 @@ const getUserById = createSelector(
 
 export default R.compose(
   asyncConnect([{
-    promise: ({ store, params: { id } }) => {
+    promise: ({ store, params: { id }, location }) => {
       const user = getUserById(store.getState(), id)
+      const page = R.pathOr(1, ['query', 'page'], location)
 
       store.dispatch(fetchReports({
         companyId: R.pathOr('', ['userData', 'companyId'], store.getState()),
         email: R.prop('email', user),
         uid: R.prop('uid', user),
-        since: moment(new Date()).subtract(14, 'days').format('YYYY-MM-DD'),
+        since: moment(new Date()).subtract(365, 'days').format('YYYY-MM-DD'),
         until: moment(new Date()).format('YYYY-MM-DD'),
-        token: R.pathOr('', ['auth', 'token'], store.getState())
+        token: R.pathOr('', ['auth', 'token'], store.getState()),
+        page
       }))
 
       store.dispatch(loadComments(id))
@@ -37,6 +39,7 @@ export default R.compose(
       comments: { user, days }
     }) => ({
       days: R.prop('days', reports),
+      page: parseInt(R.prop('page', reports), 10),
       user,
       initialValues: R.prop(user, days)
     }), {
