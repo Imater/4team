@@ -5,6 +5,7 @@ import { reducer as form } from 'redux-form'
 import userAgent from './userAgent'
 import auth from './auth'
 import userData from './userData'
+import projects from './projects'
 import users from './users'
 import reports from './reports'
 import tasks from './tasks'
@@ -17,6 +18,7 @@ const appReducers = combineReducers({
   userAgent,
   auth,
   userData,
+  projects,
   users,
   reports,
   tasks,
