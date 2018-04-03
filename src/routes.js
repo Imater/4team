@@ -7,7 +7,7 @@ export default () => ({
   component: App,
   childRoutes: [
     {
-      path: '/user/:id',
+      path: '/users/:id',
       component: User
     }
   ]
