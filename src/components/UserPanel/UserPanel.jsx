@@ -1,17 +1,29 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
 import { Link } from 'react-router'
+import { FormControl } from 'react-bootstrap'
 import Text from 'components/Text'
 
 import styles from './UserPanel.styl'
 
 export default class UserPanel extends PureComponent {
   static propTypes = {
-    users: pt.array
+    token: pt.string,
+    users: pt.array,
+    projects: pt.array,
+    fetchProjectUsers: pt.func
   }
 
   static defaultProps = {
-    users: []
+    users: [],
+    projects: [],
+    fetchProjectUsers: () => {}
   }
+
+  handleSelectProject = e =>
+    this.props.fetchProjectUsers({
+      id: e.target.value,
+      token: this.props.token
+    })
 
   renderUser = ({ id, name }, key) => (
     <div
@@ -21,7 +33,7 @@ export default class UserPanel extends PureComponent {
       <Link
         className={styles.link}
         activeClassName={styles.link_active}
-        to={`/user/${id}`}
+        to={`/users/${id}`}
       >
         <Text size={16}>
           {name}
@@ -30,12 +42,44 @@ export default class UserPanel extends PureComponent {
     </div>
   )
 
+  renderOption = ({ id, name }) => (
+    <option
+      key={id}
+      value={id}
+    >
+      {name}
+    </option>
+  )
+
   render() {
-    const { users } = this.props
+    const {
+      users,
+      projects
+    } = this.props
 
     return (
       <aside className={styles.userPanel}>
-        {users.map(this.renderUser)}
+        <div className={styles.users}>
+          {users.map(this.renderUser)}
+        </div>
+
+        <div className={styles.projects}>
+          <FormControl
+            componentClass='select'
+            placeholder='Проект'
+            onChange={this.handleSelectProject}
+          >
+            <option
+              value=''
+              selected
+              disabled
+            >
+              Проекты
+            </option>
+
+            {projects.map(this.renderOption)}
+          </FormControl>
+        </div>
       </aside>
     )
   }
