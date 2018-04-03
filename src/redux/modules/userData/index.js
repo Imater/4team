@@ -4,6 +4,7 @@ import axios from 'axios'
 import R from 'ramda'
 import { setAuthSuccess, setAuthFailure } from 'redux/modules/auth'
 import { fetch as fetchProjects } from 'redux/modules/projects'
+import { fetch as fetchUsers } from 'redux/modules/users'
 
 const initialState = {
   isLoading: false,
@@ -48,6 +49,10 @@ const handleFetchSuccess = (state, { data, token }) =>
     Effects.batch([
       Effects.call(setAuthSuccess, token),
       Effects.call(fetchProjects, {
+        id: R.path(['data', 'data', 'default_wid'], data),
+        token
+      }),
+      Effects.call(fetchUsers, {
         id: R.path(['data', 'data', 'default_wid'], data),
         token
       })
