@@ -58,7 +58,7 @@ export default class User extends PureComponent {
 
             <Link
               className={styles.link}
-              to={`/user/${user}?page=${nextPage}`}
+              to={`/users/${user}?page=${nextPage}`}
             >
               <Text size={16}>
                 Еще...
