@@ -52,11 +52,12 @@ export default Object.assign({
     }
   },
   task: {
-    template: /(CSSSR-\d*)|(RO-\d*)|(CHOC-\d*)/gi,
+    template: /(CSSSR-\d*)|(RO-\d*)|(CHOC-\d*)|(RLFOPT-\d*)/gi,
     prefix: {
       CSSSR: 'http://jira.relef.ru/browse/',
       RO: 'http://jira.relef.ru/browse/',
-      CHOC: 'http://jira.staffconfig.ru/browse/'
+      CHOC: 'http://jira.staffconfig.ru/browse/',
+      RLFOPT: 'https://trello.com/search?q='
     }
   },
   users: [
