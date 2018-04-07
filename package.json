@@ -78,6 +78,7 @@
     "memoizee": "^0.4.5",
     "method-override": "^2.3.8",
     "moment": "2.20.1",
+    "moment-duration-format": "^2.2.2",
     "passport": "^0.3.2",
     "passport-github2": "^0.1.9",
     "piping": "^1.0.0-rc.4",
