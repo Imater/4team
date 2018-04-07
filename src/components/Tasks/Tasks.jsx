@@ -36,7 +36,10 @@ export default class Tasks extends PureComponent {
       </Button>
 
       <div className={styles.time}>
-        <Text size={16}>
+        <Text
+          size={16}
+          nowrap
+        >
           {time}
         </Text>
       </div>
