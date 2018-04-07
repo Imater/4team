@@ -42,9 +42,11 @@ export default class WorkDay extends PureComponent {
               {caption}
             </Title>
 
-            <Text size={18}>
-              {time}
-            </Text>
+            <div className={styles.time}>
+              <Text size={16}>
+                {time}
+              </Text>
+            </div>
           </div>
 
           <Field
