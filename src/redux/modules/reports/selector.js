@@ -1,10 +1,9 @@
 import R from 'ramda'
 import moment from 'moment'
+import momentDurationFormatSetup from 'moment-duration-format'
 import config from 'config'
 
-const leftPad = str => `00${str}`.slice(-'00'.length)
-const formatTime = dur =>
-  `${leftPad(dur.hours())}:${leftPad(dur.minutes())}:${leftPad(dur.seconds())}`
+momentDurationFormatSetup(moment)
 
 export const getDays = data => {
   const days = R.compose(
@@ -12,7 +11,7 @@ export const getDays = data => {
     R.map(R.sortBy(R.prop('end'))),
     R.map(day => R.map(task => ({
       ...task,
-      time: task.dur ? formatTime(moment.duration(task.dur)) : ''
+      time: task.dur ? moment.duration(task.dur, 'milliseconds').format('h[ч] mm[м]') : ''
     }), day)),
     R.map(day => R.values(day)),
     R.map(day => R.reduce((acc, cur) => ({
@@ -37,7 +36,7 @@ export const getDays = data => {
     return {
       date,
       tasks: day,
-      totalTime: totalTime ? formatTime(moment.duration(totalTime)) : ''
+      totalTime: totalTime ? moment.duration(totalTime, 'milliseconds').format('h[ч] mm[м]') : ''
     }
   })(days)
 
