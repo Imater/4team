@@ -40,5 +40,11 @@ export const getDays = data => {
     }
   })(days)
 
-  return R.reverse(R.sortBy(R.prop('date'), R.values(daysWithTotal)))
+  const sortedDays = R.reverse(R.sortBy(R.prop('date'), R.values(daysWithTotal)))
+  const formatedDate = R.map(day => ({
+    ...day,
+    date: `${moment(day.date).locale('ru').format('MM.DD.YYYY dd')}`
+  }))(sortedDays)
+
+  return formatedDate
 }
