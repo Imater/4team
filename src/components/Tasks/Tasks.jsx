@@ -20,7 +20,7 @@ export default class Tasks extends PureComponent {
     this.props.setActiveTask(url)
 
   renderTask = ({ id, description, time }, key) => (
-    <div
+    <li
       key={key}
       className={styles.task}
     >
@@ -40,16 +40,16 @@ export default class Tasks extends PureComponent {
           {time}
         </Text>
       </div>
-    </div>
+    </li>
   )
 
   render() {
     const { tasks } = this.props
 
     return (
-      <div className={styles.tasks}>
+      <ol className={styles.tasks}>
         {tasks.map(this.renderTask)}
-      </div>
+      </ol>
     )
   }
 }

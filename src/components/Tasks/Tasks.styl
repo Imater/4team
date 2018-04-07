@@ -1,10 +1,21 @@
 .tasks
   width 100%
+  counter-reset taskNumber
 
 .task
   margin-bottom 10px
   display flex
   justify-content space-between
+
+  &::before
+    margin-right 5px
+    font-size 16px
+    line-height 23px
+    content counter(taskNumber, decimal-leading-zero)
+    counter-increment taskNumber
+
+.number
+  padding-top 1px
 
 .button
   margin-right 12px
@@ -16,6 +27,6 @@
     text-decoration none
 
 .time
+  margin-right 5px
+  margin-left auto
   padding-top 1px
-  font-size 14px
-  line-height 1
