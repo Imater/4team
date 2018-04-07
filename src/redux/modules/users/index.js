@@ -88,12 +88,13 @@ const handleFetchProjectUsersSuccess = (state, payload) => {
   const data = R.pathOr([], ['data'], payload)
   const uids = R.map(user => user.uid)(data)
   const users = state.items.filter(user => R.contains(user.uid, uids))
+  const sortedUsers = R.sortBy(R.prop('name'))(users)
 
   return {
     ...state,
     isProjectUsersLoading: false,
     isProjectUsersLoaded: true,
-    users,
+    users: sortedUsers,
     error: ''
   }
 }
