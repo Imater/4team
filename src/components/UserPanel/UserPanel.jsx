@@ -74,7 +74,7 @@ export default class UserPanel extends PureComponent {
               selected
               disabled
             >
-              Проекты
+              Проект
             </option>
 
             {projects.map(this.renderOption)}
