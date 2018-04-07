@@ -12,7 +12,8 @@ export default class Text extends PureComponent {
     ]),
     margin: pt.bool,
     ellipsis: pt.bool,
-    align: pt.oneOf(['left', 'center', 'right', 'justify'])
+    align: pt.oneOf(['left', 'center', 'right', 'justify']),
+    nowrap: pt.bool
   }
 
   static defaultProps = {
@@ -26,7 +27,8 @@ export default class Text extends PureComponent {
       size,
       margin,
       ellipsis,
-      align
+      align,
+      nowrap
     } = this.props
 
     return (
@@ -44,6 +46,7 @@ export default class Text extends PureComponent {
           [styles.size_36]: size === 36,
           [styles.with_margin]: margin,
           [styles.mode_ellipsis]: ellipsis,
+          [styles.mode_nowrap]: nowrap,
           [styles.align_center]: align === 'center',
           [styles.align_right]: align === 'right',
           [styles.align_justify]: align === 'justify'
