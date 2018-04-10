@@ -1,5 +1,5 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
-import { Button, Glyphicon } from 'react-bootstrap'
+import { Button, FormControl, Glyphicon } from 'react-bootstrap'
 import Text from 'components/Text'
 
 import styles from './Iframe.styl'
@@ -27,6 +27,16 @@ export default class Iframe extends PureComponent {
   handleReload = () =>
     this.setState({ url: `${this.state.url} ` })
 
+  handleClick = () =>
+    console.log('click')
+
+  handleChange = e =>
+    this.setState({ url: e.target.value })
+
+  handleShowPanel = () => {
+    console.log('test')
+  }
+
   render() {
     const { url } = this.state
     const { totalTime } = this.props
@@ -40,9 +50,23 @@ export default class Iframe extends PureComponent {
             </Button>
           </div>
 
-          <Text size={16}>
-            {totalTime}
-          </Text>
+          <div className={styles.url}>
+            <FormControl
+              type='text'
+              value={url}
+              onClick={this.handleClick}
+              // onChange={this.handleChange}
+            />
+          </div>
+
+          <Button onClick={this.handleShowPanel}>
+            <Text
+              size={14}
+              nowrap
+            >
+              {totalTime}
+            </Text>
+          </Button>
         </div>
 
         <iframe
