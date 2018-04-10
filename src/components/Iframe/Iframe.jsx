@@ -1,10 +1,12 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
 import { Button, Glyphicon } from 'react-bootstrap'
+import Text from 'components/Text'
 
 import styles from './Iframe.styl'
 
 export default class Iframe extends PureComponent {
   static propTypes = {
+    totalTime: pt.string,
     url: pt.string.isRequired
   }
 
@@ -27,13 +29,20 @@ export default class Iframe extends PureComponent {
 
   render() {
     const { url } = this.state
+    const { totalTime } = this.props
 
     return (
       <div className={styles.wrapper}>
         <div className={styles.controls}>
-          <Button onClick={this.handleReload}>
-            <Glyphicon glyph='home' />
-          </Button>
+          <div className={styles.home}>
+            <Button onClick={this.handleReload}>
+              <Glyphicon glyph='home' />
+            </Button>
+          </div>
+
+          <Text size={16}>
+            {totalTime}
+          </Text>
         </div>
 
         <iframe
