@@ -4,6 +4,7 @@ import axios from 'axios'
 import R from 'ramda'
 import moment from 'moment/moment'
 import momentDurationFormatSetup from 'moment-duration-format'
+import config from 'config'
 
 momentDurationFormatSetup(moment)
 
@@ -68,12 +69,25 @@ const handleFetch = (state, payload) =>
 const handleFetchSuccess = (state, payload) => {
   const data = R.head(R.path(['data', 'data'], payload))
   const taskTime = moment.duration(data.time, 'milliseconds').format('h[ч] mm[м]')
+  const items = R.compose(
+    R.map(task => {
+      const entry = R.path(['title', 'time_entry'])(task)
+
+      return {
+        id: R.match(config.task.template, entry)[0],
+        description: entry.replace(config.task.template, '<b>$1$2$3$4</b>'),
+        time: task.time ? moment.duration(task.time, 'milliseconds').format('h[ч] mm[м]') : ''
+      }
+    }),
+    R.prop('items')
+  )(data)
 
   return {
     ...state,
     isLoading: false,
     isLoaded: true,
-    taskTime
+    taskTime,
+    items
   }
 }
 
