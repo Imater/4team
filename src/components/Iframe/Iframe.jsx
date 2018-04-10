@@ -1,5 +1,5 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
-import { Button } from 'react-bootstrap'
+import { Button, Glyphicon } from 'react-bootstrap'
 
 import styles from './Iframe.styl'
 
@@ -22,9 +22,6 @@ export default class Iframe extends PureComponent {
     }
   }
 
-  // handleBack = () =>
-  //   this.iframe.contentWindow.history.back()
-
   handleReload = () =>
     this.setState({ url: `${this.state.url} ` })
 
@@ -34,18 +31,8 @@ export default class Iframe extends PureComponent {
     return (
       <div className={styles.wrapper}>
         <div className={styles.controls}>
-          {/*<Button*/}
-            {/*bsStyle='link'*/}
-            {/*onClick={this.handleBack}*/}
-          {/*>*/}
-            {/*Назад*/}
-          {/*</Button>*/}
-
-          <Button
-            bsStyle='link'
-            onClick={this.handleReload}
-          >
-            Обновить
+          <Button onClick={this.handleReload}>
+            <Glyphicon glyph='home' />
           </Button>
         </div>
 

@@ -27,6 +27,7 @@ const Html = ({ assets, component, store }) => {
         {head.script.toComponent()}
         {head.style.toComponent()}
         <link href='https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css' rel='stylesheet' />
+        <link href='https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css' rel='stylesheet' />
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' />
         <link
           href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
