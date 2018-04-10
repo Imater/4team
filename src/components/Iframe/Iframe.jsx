@@ -1,6 +1,7 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
 import { Button, FormControl, Glyphicon } from 'react-bootstrap'
 import Text from 'components/Text'
+import { copy } from 'utils/copy'
 
 import styles from './Iframe.styl'
 
@@ -14,7 +15,8 @@ export default class Iframe extends PureComponent {
     super(props)
 
     this.state = {
-      url: this.props.url
+      url: this.props.url,
+      copied: false
     }
   }
 
@@ -27,8 +29,15 @@ export default class Iframe extends PureComponent {
   handleReload = () =>
     this.setState({ url: `${this.state.url} ` })
 
-  handleClick = () =>
-    console.log('click')
+  handleCopyEnd = () =>
+    setTimeout(() => {
+      this.setState({ copied: false })
+    }, 1000)
+
+  handleClick = () => {
+    copy(this.state.url)
+    this.setState({ copied: true }, this.handleCopyEnd)
+  }
 
   handleChange = e =>
     this.setState({ url: e.target.value })
@@ -38,7 +47,7 @@ export default class Iframe extends PureComponent {
   }
 
   render() {
-    const { url } = this.state
+    const { url, copied } = this.state
     const { totalTime } = this.props
 
     return (
@@ -53,10 +62,15 @@ export default class Iframe extends PureComponent {
           <div className={styles.url}>
             <FormControl
               type='text'
-              value={url}
+              value={url.trim()}
               onClick={this.handleClick}
               // onChange={this.handleChange}
             />
+
+            {copied &&
+              <div className={styles.tooltip}>
+                Адрес скопирован
+              </div>}
           </div>
 
           <Button onClick={this.handleShowPanel}>
