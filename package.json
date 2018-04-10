@@ -113,7 +113,7 @@
     "react-lazy-cache": "^3.0.1",
     "react-lazy-load": "^3.0.12",
     "react-parallax": "^1.4.1",
-    "react-portal": "^3.1.0",
+    "react-portal": "^4.1.4",
     "react-redux": "https://github.com/Imater/react-redux/tarball/54306c8b15b3e77db247b7d0842fa1efc3f5574a",
     "react-redux-perfomance": "^5.0.7",
     "react-render-logger": "^1.0.1",

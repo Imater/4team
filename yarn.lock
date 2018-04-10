@@ -7774,9 +7774,9 @@ react-popper@^0.7.0:
     popper.js "^1.12.5"
     prop-types "^15.5.10"
 
-react-portal@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/react-portal/-/react-portal-3.1.0.tgz#865c44fb72a1da106c649206936559ce891ee899"
+react-portal@^4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/react-portal/-/react-portal-4.1.4.tgz#3fc3f3f3a0e81362ab1dc9afa3c4bb5a84ec76a3"
   dependencies:
     prop-types "^15.5.8"
 
