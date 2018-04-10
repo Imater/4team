@@ -11,7 +11,8 @@ export const getDays = data => {
     R.map(R.sortBy(R.prop('end'))),
     R.map(day => R.map(task => ({
       ...task,
-      time: task.dur ? moment.duration(task.dur, 'milliseconds').format('h[ч] mm[м]') : ''
+      time: task.dur ? moment.duration(task.dur, 'milliseconds').format('h[ч] mm[м]') : '',
+      description: task.description.replace(config.task.template, '<b>$1$2$3$4</b>')
     }), day)),
     R.map(day => R.values(day)),
     R.map(day => R.reduce((acc, cur) => ({

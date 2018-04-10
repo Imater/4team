@@ -31,7 +31,7 @@ export default class Tasks extends PureComponent {
         disabled={R.isNil(id)}
       >
         <Text size={16}>
-          {description}
+          <span dangerouslySetInnerHTML={{ __html: description }} />
         </Text>
       </Button>
 
