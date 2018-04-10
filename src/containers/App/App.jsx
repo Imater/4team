@@ -29,18 +29,21 @@ import styles from './App.styl'
       isAuthorized
     },
     tasks: {
-      activeTask
+      activeTask,
+      taskTime
     }
   }) => ({
     isAuthorized,
-    activeTask
+    activeTask,
+    taskTime
   })
 )
 @pureRender
 export default class App extends Component {
   static propTypes = {
     isAuthorized: pt.bool,
-    activeTask: pt.string
+    activeTask: pt.string,
+    taskTime: pt.string
   }
 
   componentDidMount() {
@@ -59,9 +62,12 @@ export default class App extends Component {
     )
   }
 
-  renderIframe = url => (
+  renderIframe = (totalTime, url) => (
     <div className={styles.iframe}>
-      <Iframe url={url} />
+      <Iframe
+        totalTime={totalTime}
+        url={url}
+      />
     </div>
   )
 
@@ -74,12 +80,13 @@ export default class App extends Component {
   )
 
   renderRightPanel = () => {
-    const { activeTask } = this.props
+    const { activeTask, taskTime } = this.props
     const project = activeTask && activeTask.split('-')[0]
     const prefix = config.task.prefix[project]
     const url = activeTask && prefix ? `${prefix}${activeTask}` : ''
+    const totalTime = taskTime ? `${activeTask} = ${taskTime}` : ''
 
-    return url ? this.renderIframe(url) : this.renderBlank()
+    return url ? this.renderIframe(totalTime, url) : this.renderBlank()
   }
 
   render() {

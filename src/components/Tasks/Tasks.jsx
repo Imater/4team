@@ -8,16 +8,31 @@ import styles from './Tasks.styl'
 export default class Tasks extends PureComponent {
   static propTypes = {
     tasks: pt.array,
-    setActiveTask: pt.func
+    setActiveTask: pt.func,
+    companyId: pt.number,
+    email: pt.string,
+    token: pt.string,
+    getTotalTaskTime: pt.func
   }
 
   static defaultProps = {
     tasks: [],
-    setActiveTask: () => {}
+    setActiveTask: () => {},
+    getTotalTaskTime: () => {}
   }
 
-  handleClick = url => () =>
-    this.props.setActiveTask(url)
+  handleClick = url => () => {
+    const {
+      setActiveTask,
+      getTotalTaskTime,
+      companyId,
+      email,
+      token
+    } = this.props
+
+    setActiveTask(url)
+    getTotalTaskTime({ companyId, email, description: url, token })
+  }
 
   renderTask = ({ id, description, time }, key) => (
     <li
