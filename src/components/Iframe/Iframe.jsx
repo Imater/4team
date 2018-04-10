@@ -1,5 +1,6 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
-import { Button, FormControl, Glyphicon } from 'react-bootstrap'
+import { Button, FormControl, Glyphicon, Jumbotron } from 'react-bootstrap'
+import Tasks from 'containers/Tasks'
 import Text from 'components/Text'
 import { copy } from 'utils/copy'
 
@@ -8,7 +9,12 @@ import styles from './Iframe.styl'
 export default class Iframe extends PureComponent {
   static propTypes = {
     totalTime: pt.string,
-    url: pt.string.isRequired
+    url: pt.string.isRequired,
+    taskItems: pt.array
+  }
+
+  static defaultProps = {
+    taskItems: []
   }
 
   constructor(props) {
@@ -22,7 +28,10 @@ export default class Iframe extends PureComponent {
 
   componentWillReceiveProps(nextProps) {
     if (this.state.url !== nextProps.url) {
-      this.setState({ url: nextProps.url })
+      this.setState({
+        url: nextProps.url,
+        showPanel: false
+      })
     }
   }
 
@@ -42,13 +51,12 @@ export default class Iframe extends PureComponent {
   handleChange = e =>
     this.setState({ url: e.target.value })
 
-  handleShowPanel = () => {
-    console.log('test')
-  }
+  handleShowPanel = () =>
+    this.setState({ showPanel: !this.state.showPanel })
 
   render() {
-    const { url, copied } = this.state
-    const { totalTime } = this.props
+    const { url, copied, showPanel } = this.state
+    const { totalTime, taskItems } = this.props
 
     return (
       <div className={styles.wrapper}>
@@ -82,6 +90,11 @@ export default class Iframe extends PureComponent {
             </Text>
           </Button>
         </div>
+
+        {showPanel &&
+          <div className={styles.panel}>
+            <Tasks tasks={taskItems} />
+          </div>}
 
         <iframe
           className={styles.iframe}

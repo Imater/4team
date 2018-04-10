@@ -30,12 +30,14 @@ import styles from './App.styl'
     },
     tasks: {
       activeTask,
-      taskTime
+      taskTime,
+      items
     }
   }) => ({
     isAuthorized,
     activeTask,
-    taskTime
+    taskTime,
+    taskItems: items
   })
 )
 @pureRender
@@ -43,7 +45,12 @@ export default class App extends Component {
   static propTypes = {
     isAuthorized: pt.bool,
     activeTask: pt.string,
-    taskTime: pt.string
+    taskTime: pt.string,
+    taskItems: pt.array
+  }
+
+  static defaultProps = {
+    taskItems: []
   }
 
   componentDidMount() {
@@ -67,6 +74,7 @@ export default class App extends Component {
       <Iframe
         totalTime={totalTime}
         url={url}
+        taskItems={this.props.taskItems}
       />
     </div>
   )
