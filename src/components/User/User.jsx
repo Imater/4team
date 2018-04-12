@@ -22,7 +22,7 @@ export default class User extends PureComponent {
 
   renderDay = ({ date, tasks, totalTime }) => {
     const { handleSubmit } = this.props
-    const caption = date.replace('.', '-')
+    const caption = date.replace(/./g, '-')
 
     return (
       <div
