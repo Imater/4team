@@ -22,6 +22,7 @@ export default class User extends PureComponent {
 
   renderDay = ({ date, tasks, totalTime }) => {
     const { handleSubmit } = this.props
+    const caption = date.replace('.', '-')
 
     return (
       <div
@@ -29,7 +30,7 @@ export default class User extends PureComponent {
         className={styles.day}
       >
         <WorkDay
-          caption={date}
+          caption={caption}
           time={totalTime}
           onBlur={handleSubmit}
         >
