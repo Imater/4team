@@ -66,12 +66,12 @@ export default class UserPanel extends PureComponent {
         <div className={styles.projects}>
           <FormControl
             componentClass='select'
+            defaultValue='Проект'
             placeholder='Проект'
             onChange={this.handleSelectProject}
           >
             <option
-              value=''
-              selected
+              value='Проект'
               disabled
             >
               Проект
