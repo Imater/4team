@@ -1,10 +1,12 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
 import { Field } from 'redux-form'
+import R from 'ramda'
 import TextareaAutosize from 'react-autosize-textarea'
 import Title from 'components/Title'
 import Text from 'components/Text'
+
 import styles from './WorkDay.styl'
-import R from 'ramda'
+
 
 export default class WorkDay extends PureComponent {
   static propTypes = {
@@ -34,7 +36,8 @@ export default class WorkDay extends PureComponent {
       time,
       children
     } = this.props
-    const fieldName = R.replace(/\./g, '', caption).split(' ')[0]
+    const date = R.replace(/\./g, '', caption).split(' ')[0]
+    const fieldName = `date-${date}`
 
     return (
       <div className={styles.workDay}>
