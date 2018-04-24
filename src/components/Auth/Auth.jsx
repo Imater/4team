@@ -1,6 +1,7 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
 import { Field } from 'redux-form'
 import cn from 'classnames'
+
 import styles from './Auth.styl'
 
 export default class Auth extends PureComponent {

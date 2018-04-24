@@ -1,5 +1,6 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
 import cx from 'classnames'
+
 import styles from './Title.styl'
 
 export default class Title extends PureComponent {
