@@ -1,4 +1,5 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
+
 import styles from './LeftPanel.styl'
 
 export default class LeftPanel extends PureComponent {

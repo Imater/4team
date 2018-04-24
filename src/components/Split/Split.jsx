@@ -1,4 +1,5 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
+
 import styles from './Split.styl'
 
 export default class Split extends PureComponent {

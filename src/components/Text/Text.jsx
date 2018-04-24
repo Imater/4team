@@ -1,5 +1,6 @@
 import React, { PureComponent, PropTypes as pt } from 'react'
 import cx from 'classnames'
+
 import styles from './Text.styl'
 
 export default class Text extends PureComponent {
