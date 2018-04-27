@@ -57,7 +57,8 @@ export default Object.assign({
       CSSSR: 'http://jira.relef.ru/browse/',
       RO: 'http://jira.relef.ru/browse/',
       CHOC: 'http://jira.staffconfig.ru/browse/',
-      RLFOPT: 'https://trello.com/search?q='
+      RLFOPT: 'https://trello.com/search?q=',
+      LAMA: 'http://jira.moscow.alfaintra.net/browse/'
     }
   },
   users: [
