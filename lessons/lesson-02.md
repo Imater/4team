@@ -3,11 +3,11 @@
 ### NODE_ENV === 'production'
 Ускорение производительности при NODE_ENV === 'production', за счёт внутренней оптимизации, минификации кода и стилей, отключения части функционала дебага и вывода ошибок и предупреждений.
 Внутренние оптимизации внутри React при production через плагины: https://krambertech.github.io/react-perf-talk/assets/player/KeynoteDHTMLPlayer.html#10:
-– React Constant Elements Transform - перенос вёрстки в константы
-– React Inline Elements Transform
-– React RemovePropTypes Transform
-– Transform Pure Class To Function - объяснить, что делать это вручную уже не требуется
-– React optimize preset
+- React Constant Elements Transform - перенос вёрстки в константы
+- React Inline Elements Transform
+- React RemovePropTypes Transform
+- Transform Pure Class To Function - объяснить, что делать это вручную уже не требуется
+- React optimize preset
 
 ### Указать версии поддерживаемых браузеров
 Если их не указать, то будет очень много полифилов и оптимизаций для старых браузеров
