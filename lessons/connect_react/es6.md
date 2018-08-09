@@ -222,11 +222,11 @@ const rabbit = {
 rabbit.walk();
 ```
 
-### Promise
-### Модули
-### Set, Map, WeakSet и WeakMap
-### Генераторы
-### Proxy
-### Тип данных Symbol
-### Итераторы
 Также в es-2015 появились новые возможности, которые используются чуть реже, но мы большинство их будем рассматривать по мере изучения React. Подробнее можно ознакомиться вот тут: https://learn.javascript.ru/es-modern
+* Promise
+* Модули
+* Set, Map, WeakSet и WeakMap
+* Генераторы
+* Proxy
+* Тип данных Symbol
+* Итераторы
