@@ -10,6 +10,7 @@ https://codepen.io/Imater/pen/JEQdGv - минимальные настройки
 
 ### React в онлайн редакторах с npm модулями
 
+#### Stackblitz
 https://stackblitz.com/edit/react-m32gzi - SlackBlitz
 
-[[http://s.csssr.ru/U0Y1QRYG7/20180809113316.jpg]]
+![](http://s.csssr.ru/U0Y1QRYG7/20180809113316.jpg)
