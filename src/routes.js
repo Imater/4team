@@ -1,19 +1,14 @@
 import App from './containers/App'
+import User from './containers/User'
 
 // export default routes
 export default () => ({
   path: '/',
   component: App,
-  indexRoute: {
-    getComponent: (loc, cb) => require.ensure([], require =>
-      cb(null, require('./containers/PageCatalog')), 'PageCatalog')
-  },
-  getChildRoutes: (locationApp, cbApp) => cbApp(null, [
+  childRoutes: [
     {
-      path: 'tree',
-      getComponent: (loc, cb) => require.ensure([], require =>
-        cb(null, require('./containers/PageTree')), 'PageTree')
+      path: '/users/:id',
+      component: User
     }
-  ])
+  ]
 })
-

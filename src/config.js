@@ -17,6 +17,7 @@ export default Object.assign({
   apiServer: process.env.APISERVER || 'http://s.api.4team.ru:80',
   authServer: process.env.AUTHSERVER || 'http://s.connect.4team.ru/',
   kladrToken: process.env.KLADR_TOKEN || '57d649510a69de06468b45cb',
+  togglServer: process.env.APISERVER || 'https://www.toggl.com',
   metrika: {
     status: true,
     ga: 'UA-79219887-1',
@@ -49,5 +50,36 @@ export default Object.assign({
         { property: 'og:image:height', content: '41' }
       ]
     }
-  }
+  },
+  task: {
+    template: /(CSSSR-\d*)|(RO-\d*)|(CHOC-\d*)|(LAMA-\d*)|(RLFOPT-\d*)/gi,
+    prefix: {
+      CSSSR: 'http://jira.relef.ru/browse/',
+      RO: 'http://jira.relef.ru/browse/',
+      CHOC: 'http://jira.staffconfig.ru/browse/',
+      RLFOPT: 'https://trello.com/search?q=',
+      LAMA: 'http://jira.moscow.alfaintra.net/browse/'
+    }
+  },
+  users: [
+    {
+      name: 'Дмитрий',
+      email: 'dmitry.zhdan@csssr.com'
+    }, {
+      name: 'Женя',
+      email: 'eugene.vetsel@csssr.com'
+    }, {
+      name: 'Арарат',
+      email: 'ararat.martirossyan@csssr.com'
+    }, {
+      name: 'Рустам',
+      email: 'rustam.yusupov@csssr.com'
+    }, {
+      name: 'Денис',
+      email: 'denis.sein@csssr.com'
+    }, {
+      name: 'Андрей',
+      email: 'andrey.nalivaika@csssr.com'
+    }
+  ]
 }, environment)

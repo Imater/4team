@@ -26,6 +26,8 @@ const Html = ({ assets, component, store }) => {
         {head.link.toComponent()}
         {head.script.toComponent()}
         {head.style.toComponent()}
+        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css' rel='stylesheet' />
+        <link href='https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css' rel='stylesheet' />
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' />
         <link
           href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
@@ -33,7 +35,7 @@ const Html = ({ assets, component, store }) => {
           integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN'
           crossOrigin='anonymous'
         />
-        <script src="https://p.trellocdn.com/embed.min.js" />
+        <script src='https://p.trellocdn.com/embed.min.js' />
         <link rel='shortcut icon' href='/favicon.png' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
 
