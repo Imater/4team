@@ -53,7 +53,7 @@ export default AdaptiveHeader
 ### Import – использование "псевдонимов" при помощи `as`
 Бывает так, что по умолчанию, именованные функции имеют неудобное при конкретном использовании имя, оно может, например, дублироваться. Тогда используют оператор `as`, который создаёт псевдоним для библиотеки или её отдельных функций.
 
-```
+```javascript
 import * as name from "module-name"; 
 import { export as alias } from "module-name"; 
 import { export1 , export2 as alias2 } from "module-name"; 
@@ -62,7 +62,7 @@ import defaultExport, * as name from "module-name";
 
 ### Import – простой импорт самоисполняющегося кода
 Для простого импорта кода, который исполнится сам или импорта стилей, поллифилов, используют import без создания переменной. Это называется импорт модуля для использования его побочного эффекта:
-```
+```javascript
 import "module-name";
 ```
 
@@ -119,7 +119,7 @@ handleLoadClick() {
 
 ### Export – экспорт кода для дальнейшего использования при помощи `import`
 
-```
+```javascript
 export { name1, name2, …, nameN };
 export { variable1 as name1, variable2 as name2, …, nameN };
 export let name1, name2, …, nameN; // или var
