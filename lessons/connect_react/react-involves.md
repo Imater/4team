@@ -43,3 +43,4 @@
 * Test Renderer
 
 Подробности вы можете изучить в оф.руководстве: https://reactjs.org/docs/test-utils.html
+
